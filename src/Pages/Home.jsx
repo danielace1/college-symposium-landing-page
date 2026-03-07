@@ -1,12 +1,11 @@
-import "../fonts/stylesheet.css";
 import { useState, useEffect, useMemo } from "react";
-
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link as Scroll } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import Modal from "react-modal";
-
+import { Rocket, Calendar, Trophy, Award, ChevronDown } from "lucide-react";
 import EventsCard from "../components/EventsCard";
-import ConfettiEl from "../util/Confetti";
+import HeroParticles from "../components/HeroParticles";
 
 Modal.setAppElement("#root");
 
@@ -17,433 +16,550 @@ const Home = () => {
     minutes: 0,
     seconds: 0,
   });
-
-  const targetDate = useMemo(() => new Date("2024-10-16T10:00:00"), []);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
 
-  useEffect(
-    () => {
-      const hasSeenModal = localStorage.getItem("hasSeenModal");
+  const targetDate = useMemo(() => new Date("2026-03-24T09:00:00"), []);
 
-      if (!hasSeenModal) {
-        setIsModalOpen(true);
-        setShowConfetti(true);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-        localStorage.setItem("hasSeenModal", "true");
-      }
-
-      const interval = setInterval(() => {
-        const now = new Date();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-          clearInterval(interval);
-          setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-          alert("The event has started!");
-        } else {
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          setTimeLeft({ days, hours, minutes, seconds });
-        }
-      }, 1000);
-
-      return () => clearInterval(interval);
-    },
-    [targetDate],
-    []
-  );
-
-  // Clear the modal flag when the component unmounts or the window is closed
   useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.removeItem("hasSeenModal");
-    };
+    const hasSeenModal = localStorage.getItem("hasSeenModal");
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    if (!hasSeenModal) {
+      setIsModalOpen(true);
+      localStorage.setItem("hasSeenModal", "true");
+    }
 
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
+    const interval = setInterval(() => {
+      const now = new Date();
+      const distance = targetDate - now;
 
-  const splitDigits = (num) => String(num).padStart(2, "0").split("");
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  const dayDigits = splitDigits(timeLeft.days);
-  const hourDigits = splitDigits(timeLeft.hours);
-  const minuteDigits = splitDigits(timeLeft.minutes);
-  const secondDigits = splitDigits(timeLeft.seconds);
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const containerVars = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+    },
+  };
+
+  const itemVars = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
 
   return (
     <div className="">
       {/* Banner */}
-      {showConfetti && <ConfettiEl />}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020202] px-4 pt-5 pb-2">
+        <HeroParticles />
 
-      <section className="bg-[url('/home-bg.jpeg')] bg-cover object-cover bg-center min-h-screen bg-no-repeat flex justify-center items-center text-center px-3 relative pb-5 md:pb-10">
-        <div className="">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl mb-2 md:mb-3 jersey-10-regular tracking-wide text-border-cyan text-shadow-cyan">
-            SPARZO’24
-          </h1>
-          <h2
-            className="text-white text-xl md:text-3xl lg:text-4xl mb-7 md:mb-12"
-            style={{
-              fontFamily: "Porter Sans Block",
-            }}
-          >
-            LET’S VIBE WITH US
-          </h2>
-          <h3 className="text-white text-xl md:text-4xl font-bold tracking-widest text-shadow ">
-            THE GREAT EVENTS STARTS IN
-          </h3>
-
-          {/* TIME LEFT */}
-          <div className="mt-5 md:mt-10 flex items-center justify-center space-x-4 md:space-x-10">
-            <div className="text-center">
-              <label
-                htmlFor="days"
-                className="text-white font-semibold text-lg md:text-3xl lg:text-3xl text-shadow"
-              >
-                DAYS
-              </label>
-              <div className="flex justify-center items-center space-x-1 md:space-x-3 mt-1.5 md:mt-3">
-                {dayDigits.map((digit, index) => (
-                  <input
-                    key={`day-${index}`}
-                    type="number"
-                    disabled
-                    className="outline-none w-8 h-12 md:w-14 md:h-20 lg:w-16 lg:h-24 bg-white shadow-lg shadow-cse-cyan rounded-lg text-center text-xl md:text-4xl lg:text-5xl"
-                    value={digit}
-                    style={{ MozAppearance: "textfield" }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <label
-                htmlFor="hrs"
-                className="text-white font-semibold text-lg md:text-3xl lg:text-3xl text-shadow "
-              >
-                HRS
-              </label>
-              <div className="flex justify-center items-center space-x-1 md:space-x-3 mt-1.5 md:mt-3">
-                {hourDigits.map((digit, index) => (
-                  <input
-                    key={`hour-${index}`}
-                    type="number"
-                    disabled
-                    className="outline-none w-8 h-12 md:w-14 md:h-20 lg:w-16 lg:h-24 bg-white shadow-lg shadow-cse-cyan rounded-lg text-center text-xl md:text-4xl lg:text-5xl"
-                    value={digit}
-                    style={{ MozAppearance: "textfield" }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <label
-                htmlFor="mins"
-                className="text-white font-semibold text-lg md:text-3xl lg:text-3xl text-shadow "
-              >
-                MINS
-              </label>
-              <div className="flex justify-center items-center space-x-1 md:space-x-3 mt-1.5 md:mt-3">
-                {minuteDigits.map((digit, index) => (
-                  <input
-                    key={`minute-${index}`}
-                    type="number"
-                    disabled
-                    className="outline-none w-8 h-12 md:w-14 md:h-20 lg:w-16 lg:h-24 bg-white shadow-lg shadow-cse-cyan rounded-lg text-center text-xl md:text-4xl lg:text-5xl"
-                    value={digit}
-                    style={{ MozAppearance: "textfield" }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <label
-                htmlFor="secs"
-                className="text-white font-semibold text-lg md:text-3xl lg:text-3xl text-shadow "
-              >
-                SECS
-              </label>
-              <div className="flex justify-center items-center space-x-1 md:space-x-3 mt-1.5 md:mt-3">
-                {secondDigits.map((digit, index) => (
-                  <input
-                    key={`second-${index}`}
-                    type="number"
-                    disabled
-                    className="outline-none w-8 h-12 md:w-14 md:h-20 lg:w-16 lg:h-24 bg-white shadow-lg shadow-cse-cyan rounded-lg text-center text-xl md:text-4xl lg:text-5xl"
-                    value={digit}
-                    style={{ MozAppearance: "textfield" }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 md:mt-20 flex items-center justify-center space-x-4 md:space-x-10">
-            <div>
-              <a
-                href="https://forms.gle/2LhNuqZ98DwFEnDe7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="font-bold px-5 py-2.5 md:px-6 md:py-3.5 text-white md:text-2xl lg:text-2xl border-2 border-cse-cyan hover:bg-cse-violet transition-all hover:transition-all rounded-lg text-shadow shadow-glow-hover">
-                  Register Now
-                </button>
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://linktr.ee/sparzo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="font-bold px-5 py-2.5 md:px-6 md:py-3.5 text-white md:text-2xl lg:text-2xl border-2 border-cse-cyan hover:bg-cse-violet over:shadow-glow transition-all hover:transition-all rounded-lg text-shadow shadow-glow-hover">
-                  Contact Us
-                </button>
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-20">
-            <h1 className="text-white text-shadow-dark-cyan text-stroke-1-cse-dark-cyan text-lg md:text-3xl font-semibold mb-2">
-              Win Exciting Cash Prices
-            </h1>
-            <h2 className="text-white text-shadow-dark-cyan text-stroke-1-cse-dark-cyan text-lg md:text-3xl font-semibold mb-4">
-              Food & Accommodation Available
-            </h2>
-            <h3 className="text-white text-shadow-dark-violet text-stroke-0-cse-violet font-semibold md:text-xl">
-              Guaranteed Participant Certificate
-            </h3>
-          </div>
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 6, repeat: Infinity }}
+            className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[50vw] h-[30vw] bg-yellow-600/10 blur-[100px] rounded-full"
+          />
         </div>
+
+        <motion.div
+          style={{ y: y1, opacity }}
+          variants={containerVars}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-[1200px] mx-auto text-center flex flex-col items-center"
+        >
+          <motion.div
+            initial={{ y: 30, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative md:mb-2"
+          >
+            <div className="absolute -inset-4 bg-yellow-500/10 blur-2xl rounded-full" />
+            <img
+              src="/sparzo26-logo.png"
+              alt="SPARZO Phoenix"
+              className="w-28 h-28 md:w-36 md:h-36 object-contain logo-glow relative z-10"
+            />
+          </motion.div>
+
+          <motion.div
+            variants={itemVars}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-yellow-500/20 mb-6"
+          >
+            <span className="h-1 w-1 rounded-full bg-yellow-400 animate-pulse" />
+            <span className="text-[8px] md:text-[10px] font-bold text-yellow-500 uppercase tracking-[0.3em]">
+              National Technical Symposium • 2026
+            </span>
+          </motion.div>
+
+          <motion.div variants={itemVars} className="relative mb-2 md:mb-4">
+            <h1 className="metallic-text whitespace-nowrap text-[12vw] sm:text-[80px] md:text-[110px] lg:text-[140px] font-[900] leading-none tracking-[0.05em] uppercase font-['Plus_Jakarta_Sans']">
+              SPARZO
+              <span className="text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.5)] ml-4">
+                ’26
+              </span>
+            </h1>
+            <p className="mt-4 text-white/40 text-[10px] md:text-[11px] tracking-[0.5em] uppercase font-medium pl-[1em]">
+              Government College of Engineering, Tirunelveli
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={itemVars}
+            className="mt-5 md:mt-8 grid grid-cols-4 gap-2 md:gap-4 w-full max-w-3xl"
+          >
+            {Object.entries(timeLeft).map(([unit, value]) => (
+              <div key={unit} className="relative group">
+                <div className="relative overflow-hidden flex flex-col items-center justify-center py-6 md:py-8 rounded-2xl glass-card border-white/5 transition-all duration-500 group-hover:border-yellow-500/30">
+                  <span className="text-3xl md:text-5xl font-bold text-white tabular-nums tracking-tighter">
+                    {String(value).padStart(2, "0")}
+                  </span>
+                  <span className="text-[7px] md:text-[8px] uppercase tracking-[0.3em] text-yellow-500 mt-1 font-black">
+                    {unit}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={itemVars}
+            className="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center"
+          >
+            <a
+              href="https://forms.gle/..."
+              target="_blank"
+              className="group relative"
+            >
+              <div className="absolute -inset-0.5 bg-yellow-500 rounded-full blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+              <button className="relative flex items-center gap-3 px-10 py-4 bg-yellow-500 text-black font-black text-xs tracking-[0.2em] uppercase rounded-full hover:scale-105 active:scale-95 transition-all">
+                <Rocket
+                  size={16}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                />
+                Register Now
+              </button>
+            </a>
+
+            <Scroll
+              to="technical-events"
+              smooth={true}
+              duration={500}
+              className="group"
+            >
+              <button className="flex items-center gap-3 px-10 py-4 glass-card border-white/10 text-white font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-white/5 hover:border-white/20 active:scale-95 transition-all">
+                <Calendar size={16} className="text-yellow-500" />
+                View Events
+              </button>
+            </Scroll>
+          </motion.div>
+
+          <div className="mt-8 flex justify-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity">
+            <div className="flex items-center gap-2 text-[8px] font-bold tracking-widest uppercase">
+              <Trophy size={12} /> 50K Prizes
+            </div>
+            <div className="flex items-center gap-2 text-[8px] font-bold tracking-widest uppercase">
+              <Award size={12} /> Certificates
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-6 flex flex-col items-center gap-1 opacity-20"
+        >
+          <div className="w-[1px] h-6 bg-gradient-to-b from-yellow-500 to-transparent" />
+        </motion.div>
       </section>
 
       {/* Modal */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        className="relative w-11/12 md:w-2/3 lg:w-2/5 mx-auto my-10 bg-[url('/modal-bg.png')] bg-cover bg-no-repeat bg-center bg-white px-5 py-6 md:py-8 lg:py-10 rounded-lg shadow-lg border border-cse-cyan outline-none text-center"
+        overlayClassName="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-sm bg-black/70"
+        className="relative w-[85%] max-w-[320px] outline-none overflow-visible"
       >
-        <span
-          className="absolute -right-3 -top-3.5 bg-cse-violet rounded-full p-0.5 hover:cursor-pointer"
-          onClick={() => setIsModalOpen(false)}
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative w-full rounded-[2rem] border border-yellow-500/20 bg-[#0A0A0A] p-7 overflow-hidden shadow-2xl"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="23"
-            height="23"
-            viewBox="0 0 24 24"
-            className="fill-current text-white"
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="absolute top-4 right-4 z-20 p-1.5 rounded-full bg-white/5 border border-white/10 text-white/40 hover:text-yellow-500 hover:bg-yellow-500/10 transition-all duration-300"
           >
-            <path d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275t.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"></path>
-          </svg>
-        </span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
 
-        <h1 className="text-white text-shadow-dark-cyan text-stroke-1-cse-dark-cyan text-xl md:text-3xl font-semibold mb-2">
-          💸 Win Exciting Cash Prices 💸
-        </h1>
-        <h2 className="text-white text-shadow-dark-cyan text-stroke-1-cse-dark-cyan text-lg md:text-2xl font-semibold mb-4">
-          Food & Accommodation Available
-        </h2>
-        <h3 className="text-white text-shadow-dark-violet text-stroke-0-cse-violet font-semibold md:text-xl">
-          Guaranteed Participant Certificate
-        </h3>
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="mt-5 text-white text-shadow px-5 py-1.5 rounded border border-cse-cyan font-semibold hover:bg-cse-violet transition-all hover:transition-all"
-        >
-          Close
-        </button>
+          <img
+            src="/sparzo26-logo.png"
+            alt="sparzo"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 opacity-[0.08] pointer-events-none"
+          />
+
+          <div className="relative z-10 text-center">
+            {/* Icon Header */}
+            <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500/10 border border-yellow-500/20">
+              <Trophy size={20} className="text-yellow-500" />
+            </div>
+
+            <h2 className="text-xl font-[900] text-white uppercase tracking-tighter">
+              Exclusive <span className="text-yellow-500">Perks</span>
+            </h2>
+
+            <div className="h-px w-8 bg-white/10 mx-auto mt-3 mb-6" />
+
+            {/* Perks List */}
+            <div className="space-y-3">
+              {[
+                { icon: "💸", title: "Mega Prize Pool" },
+                { icon: "📜", title: "Global Certification" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5"
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <h4 className="text-[10px] font-black text-white/70 uppercase tracking-[0.2em]">
+                    {item.title}
+                  </h4>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Primary Action */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="mt-8 w-full py-4 bg-yellow-500 text-black font-[900] text-[11px] uppercase tracking-[0.3em] rounded-2xl hover:bg-yellow-400 transition-all active:scale-95 shadow-xl shadow-yellow-500/10"
+            >
+              Enter Arena
+            </button>
+          </div>
+
+          {/* Corner Details */}
+          <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-yellow-500/20 rounded-tl-[2rem]" />
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-yellow-500/20 rounded-br-[2rem]" />
+        </motion.div>
       </Modal>
 
-      {/* College Name */}
-      <section className="bg-[url('/ellipse.png')] bg-cse-main bg-cover bg-no-repeat bg-center">
-        <div className="space-y-6 md:space-y-12 px-1 text-center py-16 md:py-20 lg:py-20">
-          <div className="space-y-3 md:space-y-5">
-            <h3 className="text-white text-lg md:text-3xl lg:text-4xl font-bold text-stroke-1-cse-cyan tracking-wide">
-              Department of
-            </h3>
-            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold text-stroke-1-cse-cyan tracking-wide">
-              Computer Science & Engineering
-            </h1>
-            <h2 className="text-white text-lg md:text-3xl lg:text-4xl font-bold text-stroke-1-cse-cyan tracking-wide">
-              Government College of Engineering, Tiruneveli
-            </h2>
-          </div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#070707] via-[#0b0b0b] to-[#070707] py-14 md:py-24">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-yellow-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-          <div className="space-y-3">
-            <h1 className="text-white text-3xl md:text-3xl lg:text-4xl font-bold text-stroke-1-cse-cyan tracking-wide">
-              Proudly Presents
-            </h1>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl jersey-10-regular tracking-wider text-shadow-violet">
-              SPARZO’24
-            </h1>
-          </div>
-        </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVars}
+          className="container relative z-10 mx-auto px-6 text-center"
+        >
+          <motion.div variants={itemVars} className="space-y-4">
+            <h3 className="text-yellow-500/80 text-xs md:text-sm font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase">
+              Government College of Engineering, Tirunelveli
+            </h3>
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-white/20" />
+              <p className="text-white/60 text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium">
+                Affiliated to Anna University
+              </p>
+              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={itemVars}
+            className="mt-10 mb-12 relative inline-block p-8 rounded-[2.5rem] border border-white/5 bg-white/[0.01] backdrop-blur-sm"
+          >
+            <h4 className="text-white/40 text-[9px] md:text-xs tracking-[0.5em] uppercase mb-3 pl-[0.8em]">
+              Department of
+            </h4>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
+              Computer Science <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-yellow-500">
+                & Engineering
+              </span>
+            </h2>
+
+            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-yellow-500/30 rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-yellow-500/30 rounded-br-3xl" />
+          </motion.div>
+
+          <motion.div variants={itemVars} className="space-y-8 w-full">
+            <div className="flex flex-col items-center">
+              <span className="text-white/30 text-[10px] md:text-[12px] tracking-[0.6em] md:tracking-[1em] uppercase mb-4 md:mb-6 pl-[0.6em] md:pl-[1em]">
+                Proudly Presents
+              </span>
+
+              <div className="relative group w-full max-w-full px-4 flex justify-center items-center">
+                <h1 className="jersey-10-regular text-[15vw] min-[450px]:text-7xl md:text-9xl lg:text-[10rem] text-white tracking-wider md:tracking-widest transition-all duration-700 md:group-hover:tracking-[0.2em] group-hover:text-yellow-500 leading-none whitespace-nowrap">
+                  SPARZO<span className="text-yellow-500">’26</span>
+                </h1>
+
+                <h1 className="jersey-10-regular absolute top-0 left-0 w-full text-center hidden md:block md:text-9xl lg:text-[10rem] text-yellow-500 tracking-widest opacity-20 blur-xl pointer-events-none group-hover:tracking-[0.2em] leading-none whitespace-nowrap">
+                  SPARZO’26
+                </h1>
+
+                <div className="absolute -bottom-2 w-1/2 h-1 bg-yellow-500/20 blur-md md:hidden group-hover:bg-yellow-500/50 transition-all duration-500" />
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Events */}
-      <section className="bg-cse-main py-10 md:pt-10 md:pb-20 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-RubikDoodle text-white tracking-widest text-shadow-violet">
-          HAPPENINGS
-        </h1>
+      <section className="relative bg-[#020202] py-20 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.03),transparent_50%)] pointer-events-none" />
 
-        <div className="mt-10 flex-col flex items-center justify-center space-y-8 md:space-y-9">
-          <Scroll to="technical-events" spy={true} smooth={true} duration={500}>
-            <button className="happenings-btns">Technical Events</button>
-          </Scroll>
-          <Scroll
-            to="non-technical-events"
-            spy={true}
-            smooth={true}
-            duration={500}
-          >
-            <button className="happenings-btns">Non-Technical Events</button>
-          </Scroll>
-          <Scroll to="online-events" spy={true} smooth={true} duration={500}>
-            <button className="happenings-btns">Online Events</button>
-          </Scroll>
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center mb-16">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-yellow-500/60 text-[10px] tracking-[1em] uppercase mb-4 pl-[1em]"
+            >
+              Choose Your Path
+            </motion.span>
+            <h2 className="text-4xl md:text-6xl font-[900] text-white tracking-tighter uppercase font-['Plus_Jakarta_Sans']">
+              HAPPENINGS
+            </h2>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100px" }}
+              className="h-[2px] bg-yellow-500 mt-4 shadow-[0_0_20px_rgba(234,179,8,0.6)]"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto relative">
+            <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-12 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+            {[
+              {
+                id: "technical-events",
+                label: "Technical",
+                sub: "Logic & Code",
+                icon: <Rocket size={24} />,
+                phase: "Phase 01",
+              },
+              {
+                id: "non-technical-events",
+                label: "Non-Technical",
+                sub: "Creativity & Fun",
+                icon: <Trophy size={24} />,
+                phase: "Phase 02",
+              },
+            ].map((tab) => (
+              <Scroll
+                key={tab.id}
+                to={tab.id}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                className="cursor-pointer"
+              >
+                <motion.div
+                  whileHover={{ y: -8, borderColor: "rgba(234, 179, 8, 0.4)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="relative flex flex-col p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] backdrop-blur-xl transition-all duration-500 group overflow-hidden"
+                >
+                  {/* Subtle card glow */}
+                  <div className="absolute -inset-20 bg-yellow-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="flex items-start justify-between relative z-10 mb-8">
+                    <div className="p-3 rounded-2xl bg-white/[0.03] text-white/40 group-hover:text-yellow-500 group-hover:bg-yellow-500/10 transition-all duration-500">
+                      {tab.icon}
+                    </div>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-widest pt-2">
+                      {tab.phase}
+                    </span>
+                  </div>
+
+                  <div className="relative z-10">
+                    <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tighter group-hover:text-yellow-500 transition-colors">
+                      {tab.label}
+                    </h4>
+                    <p className="text-[10px] text-white/30 uppercase tracking-[0.3em] mt-1 font-medium">
+                      {tab.sub}
+                    </p>
+                  </div>
+
+                  <div className="mt-8 flex items-center gap-2 text-[9px] font-bold text-yellow-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                    Jump to Section{" "}
+                    <ChevronDown size={14} className="animate-bounce" />
+                  </div>
+                </motion.div>
+              </Scroll>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Event details */}
-      <section className="bg-[url('/events-bg.png')] bg-cover bg-no-repeat bg-center flex justify-center min-h-screen">
-        <div className="bg-cse-main bg-opacity-50 w-full py-16">
-          <h1 className="text-white font-bold text-4xl md:text-5xl text-shadow text-center text-shadow-violet tracking-wider">
-            EVENTS
-          </h1>
+      <section className="relative bg-[#020202] pb-40 overflow-hidden md:px-8">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(234,179,8,0.05),transparent_50%)]" />
 
-          <div
-            id="technical-events"
-            className="container px-7 md:px-12 lg:px-32 mt-10"
-          >
-            <h1 className="text-white text-center font-semibold text-3xl lg:text-4xl text-shadow">
-              TECHNICAL EVENTS
-            </h1>
+        <div className="container mx-auto px-6 relative z-10">
+          {/* TECHNICAL ARENA */}
+          <div id="technical-events" className="pt-24">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  className="text-yellow-500 text-[10px] tracking-[0.5em] uppercase font-black"
+                >
+                  Phase 01
+                </motion.span>
+                <h3 className="text-4xl md:text-6xl font-[900] text-white uppercase tracking-tighter mt-2 font-['Plus_Jakarta_Sans']">
+                  Technical{" "}
+                  <span className="metallic-text italic text-white/90">
+                    Arena
+                  </span>
+                </h3>
+              </div>
+              <div className="h-[1px] hidden md:block flex-grow mx-10 bg-gradient-to-r from-yellow-500/30 to-transparent mb-4" />
+              <p className="text-white/30 text-xs uppercase tracking-widest max-w-[200px] leading-relaxed">
+                Where code meets pure innovation.
+              </p>
+            </div>
 
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-y-12 md:gap-y-7 md:gap-x-7 lg:gap-x-10 lg:gap-y-10">
-              <RouterLink to="/paper-presentation">
-                <EventsCard
-                  name={"Paper Presentation 📃"}
-                  img={"/paperpresentation.png"}
-                  details={
-                    "Showcase and present a topic related to computer science."
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to="/code-hunt">
-                <EventsCard
-                  name={"Code Hunt 💻"}
-                  img={"/code-hunt.png"}
-                  details={
-                    " Code Hunt,an intense multi-round coding competition designed to test your programming"
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to="/webcraft">
-                <EventsCard
-                  name={"WebCraft 🎨"}
-                  img={"/webcraft.png"}
-                  details={
-                    "Design an invitation, banner, logo, or thumbnail using Canva or similar tools."
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to={"sympai"}>
-                <EventsCard
-                  name={"SympAI 🤖"}
-                  img={"/sympai.png"}
-                  details={
-                    "Symp AI, a cutting edge technical challenge crafted for AI pioneers!"
-                  }
-                />
-              </RouterLink>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  to: "/paper-presentation",
+                  name: "Paper Presentation",
+                  img: "/paperpresentation.png",
+                  desc: "The ultimate stage for research and innovation in Computer Science.",
+                },
+                {
+                  to: "/duo-debug",
+                  name: "Duo Debug",
+                  img: "/code-hunt.png",
+                  desc: "Solve or be solved. An intense multi-round coding marathon.",
+                },
+                {
+                  to: "/draftedge",
+                  name: "Draft Edge",
+                  img: "/webcraft.png",
+                  desc: "Designing the future of the web with high-end UI/UX logic.",
+                },
+                {
+                  to: "/prompt-paradox",
+                  name: "Prompt Paradox",
+                  img: "/sympai.png",
+                  desc: "AI Pioneers only. Face the cutting-edge neural challenge.",
+                },
+              ].map((event, i) => (
+                <motion.div
+                  key={event.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <RouterLink to={event.to}>
+                    <EventsCard
+                      name={event.name}
+                      img={event.img}
+                      details={event.desc}
+                    />
+                  </RouterLink>
+                </motion.div>
+              ))}
             </div>
           </div>
 
-          <div
-            id="non-technical-events"
-            className="container px-7 md:px-12 lg:px-32 mt-14"
-          >
-            <h1 className="text-white text-center font-semibold text-3xl lg:text-4xl text-shadow">
-              NON-TECHNICAL EVENTS
-            </h1>
-
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-y-12 md:gap-y-7 lg:gap-y-0 md:gap-x-7 lg:gap-x-10">
-              <RouterLink to={"/adzap"}>
-                <EventsCard
-                  name={"Adzap 🎭"}
-                  img={"/adzap.png"}
-                  details={
-                    "Create funny advertisements for imaginary products!"
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to={"/clueclash"}>
-                <EventsCard
-                  name={"Clue Clash 🧩"}
-                  img={"/clue-clash.png"}
-                  details={
-                    "Clue Clash competition designed to test participant's problem-solving, decoding, and quick-thinking skills"
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to={"/fusionary"}>
-                <EventsCard
-                  name={"Fusionary 💡"}
-                  img={"/fusionary.png"}
-                  details={
-                    "Connect the dots, decode the clues—where sharp minds and teamwork spark victory!"
-                  }
-                />
-              </RouterLink>
+          {/* FUN ZONE (NON-TECHNICAL) */}
+          <div id="non-technical-events" className="pt-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div className="md:order-2 text-right">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  className="text-yellow-500 text-[10px] tracking-[0.5em] uppercase font-black"
+                >
+                  Phase 02
+                </motion.span>
+                <h3 className="text-4xl md:text-6xl font-[900] text-white uppercase tracking-tighter mt-2 font-['Plus_Jakarta_Sans'] px-2">
+                  Fun{" "}
+                  <span className="metallic-text italic pr-4 inline-block text-white/90">
+                    Zone
+                  </span>
+                </h3>
+              </div>
+              <div className="h-[1px] hidden md:block flex-grow mx-10 bg-gradient-to-l from-yellow-500/30 to-transparent mb-4 md:order-1" />
+              <p className="text-white/30 text-xs uppercase tracking-widest max-w-[200px] leading-relaxed md:order-0">
+                Where creativity takes flight beyond the screen.
+              </p>
             </div>
-          </div>
 
-          <div
-            id="online-events"
-            className="container px-7 md:px-12 lg:px-32 mt-14"
-          >
-            <h1 className="text-white text-center font-semibold text-3xl lg:text-4xl text-shadow">
-              ONLINE EVENTS
-            </h1>
-
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-y-12 md:gap-y-7 lg:gap-y-0 md:gap-x-7 lg:gap-x-10">
-              <RouterLink to={"/cinewhiz"}>
-                <EventsCard
-                  name={"Cinewhiz 🎬"}
-                  img={"/cinewhiz.png"}
-                  details={
-                    "Showcase your storytelling creativity and cinematic skills."
-                  }
-                />
-              </RouterLink>
-
-              <RouterLink to={"/shutterstories"}>
-                <EventsCard
-                  name={"Shutter Stories 📸"}
-                  img={"/shutter-stories.png"}
-                  details={"Submit your best photograph based on a theme!"}
-                />
-              </RouterLink>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  to: "/cluecracker",
+                  name: "Clue Cracker",
+                  img: "/clue-clash.png",
+                  desc: "Decode the mysteries and solve riddles under extreme pressure.",
+                },
+                {
+                  to: "/fusionary",
+                  name: "Fusionary",
+                  img: "/fusionary.png",
+                  desc: "Connect the dots and spark victory in this battle of sharp minds.",
+                },
+              ].map((event, i) => (
+                <motion.div
+                  key={event.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <RouterLink to={event.to}>
+                    <EventsCard
+                      name={event.name}
+                      img={event.img}
+                      details={event.desc}
+                    />
+                  </RouterLink>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
