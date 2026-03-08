@@ -125,7 +125,6 @@
   overflow: hidden;
 }
 
-/* Ensure the modal overlay covers everything including particles */
 .ReactModal__Overlay {
   perspective: 1000px;
   z-index: 9999 !important;
@@ -137,12 +136,10 @@
   background: transparent !important;
 }
 
-/* Custom shadow for the Golden Button */
 .shadow-gold {
   box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
 }
 
-/* Animation for the confetti entry */
 @keyframes modalPop {
   from {
     transform: scale(0.9) translateY(20px);
@@ -152,4 +149,15 @@
     transform: scale(1) translateY(0);
     opacity: 1;
   }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+button {
+  white-space: nowrap;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }

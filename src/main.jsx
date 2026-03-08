@@ -33,7 +33,7 @@ const route = createBrowserRouter([
         element: <CodeHunt />,
       },
       {
-        path: "/webcraft",
+        path: "/draftedge",
         element: <Webcraft />,
       },
       {
@@ -66,5 +66,5 @@ const route = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={route} />
+  <RouterProvider router={route} />,
 );

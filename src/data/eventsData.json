@@ -1,0 +1,44 @@
+{
+  "draft-edge": {
+    "event_name": "Draft Edge",
+    "icon": "🎨",
+    "image": "/webcraft.png",
+    "description": "Draft Edge is an individual design challenge that tests a participant’s ability to transform ideas into visually compelling designs. Through two creative rounds, participants demonstrate design thinking, creativity, and the ability to work within constraints while producing clean and impactful visuals.",
+    "rounds": [
+      {
+        "round_name": "Redesign Challenge",
+        "description": "Participants will be given a poorly designed visual such as a poster, banner, logo, or thumbnail. Their task is to analyze the flaws and redesign it into a visually appealing and well-structured design using Canva or similar tools.",
+        "time_allotted": "30 Minutes"
+      },
+      {
+        "round_name": "Design Under Limits",
+        "description": "Participants must create a minimal yet creative design based on a theme revealed on the spot. The design must follow specific constraints that test creativity, simplicity, and design discipline.",
+        "time_allotted": "40 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "participation": "Individual event",
+      "tools": "Participants must use Canva or similar design tools",
+      "submission": "Designs must be submitted within the given time",
+      "fair_play": "Any rule violation or late submission will lead to disqualification"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Creativity & Originality",
+        "description": "Innovative ideas and unique visual approach"
+      },
+      {
+        "criteria": "Task Accuracy",
+        "description": "Proper understanding and execution of the given challenge"
+      },
+      {
+        "criteria": "Visual Aesthetics",
+        "description": "Layout balance, color usage, and overall appeal"
+      },
+      {
+        "criteria": "Design Efficiency",
+        "description": "Smart and effective use of design tools and elements"
+      }
+    ]
+  }
+}

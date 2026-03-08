@@ -107,7 +107,7 @@ const Home = () => {
             variants={itemVars}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-yellow-500/20 mb-6"
           >
-            <span className="h-1 w-1 rounded-full bg-yellow-400 animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_8px_#eab308]" />
             <span className="text-[8px] md:text-[10px] font-bold text-yellow-500 uppercase tracking-[0.3em]">
               National Technical Symposium • 2026
             </span>
@@ -120,14 +120,38 @@ const Home = () => {
                 ’26
               </span>
             </h1>
-            <p className="mt-4 text-white/40 text-[10px] md:text-[11px] tracking-[0.5em] uppercase font-medium pl-[1em]">
-              Government College of Engineering, Tirunelveli
-            </p>
           </motion.div>
 
+          {/* Date & Venue Badge */}
           <motion.div
             variants={itemVars}
-            className="mt-5 md:mt-8 grid grid-cols-4 gap-2 md:gap-4 w-full max-w-3xl"
+            className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mt-4"
+          >
+            <div className="flex flex-col items-center md:items-end">
+              <span className="text-yellow-500 font-black text-sm md:text-lg uppercase tracking-[0.2em]">
+                March 24, 2026
+              </span>
+              <span className="text-white/30 text-[8px] uppercase tracking-[0.4em] font-bold">
+                The Grand Arena
+              </span>
+            </div>
+
+            <div className="hidden md:block w-[1px] h-10 bg-gradient-to-b from-transparent via-yellow-500/40 to-transparent" />
+
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <p className="text-white/60 text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium">
+                Government College of Engineering
+              </p>
+              <p className="text-white/30 text-[8px] tracking-[0.3em] uppercase mt-1">
+                Tirunelveli, Tamil Nadu
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Countdown Section */}
+          <motion.div
+            variants={itemVars}
+            className="mt-10 md:mt-12 grid grid-cols-4 gap-2 md:gap-4 w-full max-w-3xl"
           >
             {Object.entries(timeLeft).map(([unit, value]) => (
               <div key={unit} className="relative group">
@@ -143,6 +167,7 @@ const Home = () => {
             ))}
           </motion.div>
 
+          {/* Buttons */}
           <motion.div
             variants={itemVars}
             className="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center"
@@ -166,7 +191,7 @@ const Home = () => {
               to="technical-events"
               smooth={true}
               duration={500}
-              className="group"
+              className="group cursor-pointer"
             >
               <button className="flex items-center gap-3 px-10 py-4 glass-card border-white/10 text-white font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-white/5 hover:border-white/20 active:scale-95 transition-all">
                 <Calendar size={16} className="text-yellow-500" />
@@ -175,7 +200,8 @@ const Home = () => {
             </Scroll>
           </motion.div>
 
-          <div className="mt-8 flex justify-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity">
+          {/* Perks */}
+          <div className="mt-8 flex justify-center gap-6 opacity-20">
             <div className="flex items-center gap-2 text-[8px] font-bold tracking-widest uppercase">
               <Trophy size={12} /> 50K Prizes
             </div>
@@ -185,10 +211,11 @@ const Home = () => {
           </div>
         </motion.div>
 
+        {/* Scroll Indicator */}
         <motion.div
           animate={{ y: [0, 5, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-6 flex flex-col items-center gap-1 opacity-20"
+          className="absolute bottom-6 flex flex-col items-center gap-1 opacity-20 left-1/2 -translate-x-1/2"
         >
           <div className="w-[1px] h-6 bg-gradient-to-b from-yellow-500 to-transparent" />
         </motion.div>

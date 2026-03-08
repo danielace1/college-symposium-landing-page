@@ -1,133 +1,143 @@
+import { Mail, Instagram, Linkedin, Phone, MapPin, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+
 const Footer = () => {
   return (
-    <footer className="bg-cse-main px-3 md:px-10 py-7 md:pt-10 md:pb-5 text-center -mt-8 md:-mt-5">
-      <div className="container">
-        <div className="text-white space-y-3">
-          <h1 className="text-shadow text-2xl md:text-3xl lg:text-4xl tracking-wide">
-            Contact
-          </h1>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-stroke-1-cse-cyan">
-            Feel free to Ask!
-          </h2>
-          <div className="!mt-5 flex flex-col justify-center items-center space-y-3">
-            <a
-              href="tel:+91 9750795125"
-              className="text-shadow font-semibold text-lg md:text-xl lg:text-2xl text-shadow flex items-center"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="27"
-                  height="27"
-                  viewBox="0 0 24 24"
-                  className="fill-current text-green-500 mr-2"
-                >
-                  <path d="M19.95 21q-3.125 0-6.175-1.362t-5.55-3.863t-3.862-5.55T3 4.05q0-.45.3-.75t.75-.3H8.1q.35 0 .625.238t.325.562l.65 3.5q.05.4-.025.675T9.4 8.45L6.975 10.9q.5.925 1.187 1.787t1.513 1.663q.775.775 1.625 1.438T13.1 17l2.35-2.35q.225-.225.588-.337t.712-.063l3.45.7q.35.1.575.363T21 15.9v4.05q0 .45-.3.75t-.75.3"></path>
-                </svg>
-              </span>{" "}
-              +91 9750795125
-            </a>
-            <a
-              href="tel:+91 9629503642"
-              className="text-shadow font-semibold text-lg md:text-xl lg:text-2xl text-shadow flex items-center"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="27"
-                  height="27"
-                  viewBox="0 0 24 24"
-                  className="fill-current text-green-500 mr-2"
-                >
-                  <path d="M19.95 21q-3.125 0-6.175-1.362t-5.55-3.863t-3.862-5.55T3 4.05q0-.45.3-.75t.75-.3H8.1q.35 0 .625.238t.325.562l.65 3.5q.05.4-.025.675T9.4 8.45L6.975 10.9q.5.925 1.187 1.787t1.513 1.663q.775.775 1.625 1.438T13.1 17l2.35-2.35q.225-.225.588-.337t.712-.063l3.45.7q.35.1.575.363T21 15.9v4.05q0 .45-.3.75t-.75.3"></path>
-                </svg>
-              </span>{" "}
-              +91 9629503642
-            </a>
-          </div>
-        </div>
-        <div className="mt-8 text-white flex flex-col justify-center ">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl text-shadow">
-            Reach Us on
-          </h1>
+    <footer className="relative bg-[#050505] pt-10 md:pt-16 pb-10 overflow-hidden border-t border-white/5">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-[radial-gradient(circle_at_50%_100%,rgba(234,179,8,0.05),transparent_70%)] pointer-events-none" />
 
-          <div className="mt-6 flex items-center justify-center space-x-16 md:space-x-32">
-            <div>
-              <a
-                href="mailto:sparzo.cseofficial@gmail.com"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex flex-col justify-center items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="38"
-                  height="38"
-                  viewBox="0 0 24 24"
-                  className="fill-current text-white lg:w-10 lg:h-10 md:w-8 md:h-8 w-7 h-7 hover:text-gray-400"
-                >
-                  <path d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7L4 8v10h16V8zm0-2l8-5H4zM4 8V6v12z"></path>
-                </svg>
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://www.instagram.com/sparzo_offl/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex flex-col justify-center items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="38"
-                  height="38"
-                  viewBox="0 0 24 24"
-                  className="fill-current text-white lg:w-10 lg:h-10 md:w-8 md:h-8 w-7 h-7 hover:text-gray-400"
-                >
-                  <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path>
-                </svg>
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://www.linkedin.com/in/gcetirunelveli"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex flex-col justify-center items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="38"
-                  height="38"
-                  viewBox="0 0 24 24"
-                  className="fill-current text-white lg:w-10 lg:h-10 md:w-8 md:h-8 w-7 h-7 hover:text-gray-400"
-                >
-                  <path d="M6.94 5a2 2 0 1 1-4-.002a2 2 0 0 1 4 .002M7 8.48H3V21h4zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91z"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 text-white">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-shadow">
-            Department of CSE
-          </h1>
-          <div className="mt-2 flex items-center justify-center space-x-2">
-            <div className="text-xl md:text-2xl lg:text-3xl text-shadow flex items-center">
+      <div className="container mx-auto px-10 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-32">
+          <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
+            <div className="-ml-4 flex items-center justify-center lg:justify-start">
               <img
-                src="/crosshair.png"
-                alt="Government College Of Engineering"
-                className="lg:w-6 lg:h-6 md:w-5 md:h-5 w-4 h-4 mr-2"
-              />{" "}
-              Government College Of Engineering
+                src="/sparzo26-logo.png"
+                alt="Sparzo"
+                className="w-12 h-12 object-contain"
+              />
+              <h2 className="text-3xl font-[900] tracking-tighter text-white">
+                SPARZO<span className="text-yellow-500">’26</span>
+              </h2>
+            </div>
+            <p className="text-white/40 text-sm leading-relaxed max-w-md mx-auto lg:mx-0">
+              The flagship National Level Technical Symposium organized by the
+              Association of Computer Science & Engineering, Government College
+              of Engineering, Tirunelveli.
+            </p>
+            <div className="pt-2 md:pt-4 flex justify-center lg:justify-start gap-6">
+              {[
+                {
+                  icon: <Mail size={20} />,
+                  href: "mailto:sparzo.cseofficial@gmail.com",
+                },
+                {
+                  icon: <Instagram size={20} />,
+                  href: "https://www.instagram.com/sparzo_offl/",
+                },
+                {
+                  icon: <Linkedin size={20} />,
+                  href: "https://www.linkedin.com/in/gcetirunelveli",
+                },
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/40 hover:text-yellow-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 transition-all duration-300"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
-          <h2 className="mt-3 text-lg md:text-xl lg:text-2xl text-shadow">
-            Tirunelveli
-          </h2>
+
+          <div className="lg:col-span-4 space-y-5 md:space-y-8">
+            <h4 className="text-xs font-black text-yellow-500/60 uppercase tracking-[0.4em] text-center lg:text-left">
+              Direct Line
+            </h4>
+            <div className="grid grid-cols-1 gap-4">
+              {[
+                {
+                  label: "Student Coordinator",
+                  name: "Santhosh G",
+                  phone: "+91 9489481520",
+                },
+                {
+                  label: "Association Head",
+                  name: "Allwin",
+                  phone: "+91 9342435661",
+                },
+              ].map((contact, i) => (
+                <a
+                  key={i}
+                  href={`tel:${contact.phone}`}
+                  className="group flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-yellow-500/20 transition-all"
+                >
+                  <div className="p-2 rounded-lg bg-yellow-500/10 text-yellow-500 group-hover:scale-110 transition-transform">
+                    <Phone size={18} />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest">
+                      {contact.label}
+                    </p>
+                    <p className="text-sm font-bold text-white group-hover:text-yellow-500 transition-colors">
+                      {contact.phone}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 space-y-4 md:space-y-6 text-left">
+            <h4 className="text-xs text-center md:text-left font-black text-yellow-500/60 uppercase tracking-[0.4em]">
+              Campus
+            </h4>
+            <div className="space-y-4">
+              <a
+                href="https://maps.app.goo.gl/a9wpVN5MEG37b7q58"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start justify-start gap-3 group cursor-pointer"
+              >
+                <MapPin
+                  size={18}
+                  className="text-yellow-500 shrink-0 mt-1.5 transition-transform duration-300 group-hover:scale-125"
+                />
+                <p className="text-sm text-white/50 leading-loose transition-colors duration-300 group-hover:text-white">
+                  <span className="font-bold text-white/70 group-hover:text-yellow-500 transition-colors">
+                    Government College of Engineering,
+                  </span>
+                  <br />
+                  Palayamkottai, Tirunelveli - 627007,
+                  <br />
+                  Tamil Nadu, India.
+                </p>
+              </a>
+
+              <a
+                href="https://gcetly.ac.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 text-[10px] font-bold text-yellow-500/80 hover:text-yellow-500 transition-colors uppercase tracking-widest"
+              >
+                <Globe size={14} /> Official Website
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="mt-6 text-sm md:text-lg text-stroke-0-cse-cyan text-white">
-          &copy; 2024 GCE CSE Association | All Rights Reserved.
+
+        <div className="mt-10 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
+            &copy; 2026 Association of Computer Science & Engineering.
+          </p>
+          <div className="flex items-center gap-2">
+            <div className="h-1 w-1 rounded-full bg-yellow-500 animate-pulse" />
+            <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
+              GCE Tirunelveli Association
+            </p>
+          </div>
         </div>
       </div>
     </footer>

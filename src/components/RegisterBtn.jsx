@@ -1,26 +1,22 @@
+import { Rocket } from "lucide-react";
+
 const RegisterBtn = () => {
   return (
-    <div className="">
+    <div className="relative group">
+      {/* Outer Glow Effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-orange-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+
       <a
         href="https://forms.gle/2LhNuqZ98DwFEnDe7"
         target="_blank"
         rel="noopener noreferrer"
+        className="relative block"
       >
-        <button className="font-bold px-4 py-2.5 md:px-6 md:py-3 text-white md:text-lg border border-cse-cyan hover:bg-cse-violet transition-all hover:transition-all rounded-lg text-shadow shadow-glow-hover flex justify-center items-center">
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 16 16"
-              className="fill-current text-white mr-1"
-            >
-              <g fill="currentColor">
-                <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69z"></path>
-                <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25z"></path>
-              </g>
-            </svg>
-          </span>
+        <button className="flex items-center gap-3 px-8 py-4 bg-yellow-500 text-black font-[900] text-sm md:text-base uppercase tracking-[0.2em] rounded-full transition-all duration-300 transform group-hover:scale-105 group-active:scale-95 shadow-xl">
+          <Rocket
+            size={20}
+            className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300"
+          />
           Register Now
         </button>
       </a>
