@@ -71,10 +71,10 @@ const Home = () => {
   return (
     <div className="">
       {/* Banner */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020202] px-4 pt-5 pb-2">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020202] px-4 pt-1 pb-2">
         <HeroParticles />
 
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none z-0">
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 6, repeat: Infinity }}
@@ -87,7 +87,7 @@ const Home = () => {
           variants={containerVars}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-[1200px] mx-auto text-center flex flex-col items-center"
+          className="relative z-20 max-w-[1200px] mx-auto text-center flex flex-col items-center"
         >
           <motion.div
             initial={{ y: 30, opacity: 0, scale: 0.9 }}
@@ -173,7 +173,7 @@ const Home = () => {
             className="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center"
           >
             <a
-              href="https://forms.gle/..."
+              href="https://forms.gle/AzkYc3tMdCnkBrVn6"
               target="_blank"
               className="group relative"
             >

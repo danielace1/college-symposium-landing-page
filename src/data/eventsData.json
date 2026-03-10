@@ -1,4 +1,58 @@
 {
+  "paper-presentation": {
+    "event_name": "Paper Presentation",
+    "icon": "📄",
+    "image": "/paperpresentation.png",
+    "description": "Paper Presentation is a technical event where participants present innovative ideas, research work, or technical concepts related to Computer Science and related domains. Teams will present their work using presentation slides and explain their idea, methodology, and impact. The event focuses on communication skills, technical knowledge, originality, and the ability to clearly explain complex concepts.",
+    "rounds": [
+      {
+        "round_name": "Abstract Screening",
+        "description": "Participants submit their paper abstract before the event. Selected teams will be allowed to present their work during the presentation round.",
+        "time_allotted": "Before Event"
+      },
+      {
+        "round_name": "Paper Presentation",
+        "description": "Each team presents their paper using slides explaining the problem statement, methodology, implementation, and results.",
+        "time_allotted": "10 Minutes"
+      },
+      {
+        "round_name": "Question & Answer",
+        "description": "Judges and audience may ask questions about the presented topic to test the participants’ understanding and clarity.",
+        "time_allotted": "5 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "team_size": "1 to 3 members per team",
+      "domain": "Topics must be related to Computer Science or related domains",
+      "slides_limit": "Maximum 15 presentation slides",
+      "presentation_time": "10 minutes presentation + Q&A",
+      "originality": "Only original work is allowed. Plagiarism is strictly prohibited",
+      "format": "Presentation should be prepared using PowerPoint or similar presentation tools"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Technical Knowledge",
+        "description": "Understanding of the topic and depth of technical explanation"
+      },
+      {
+        "criteria": "Innovation",
+        "description": "Creativity and originality of the idea presented"
+      },
+      {
+        "criteria": "Presentation Skills",
+        "description": "Clarity, confidence, and effectiveness in presenting the topic"
+      },
+      {
+        "criteria": "Content Quality",
+        "description": "Organization of slides, clarity of problem statement, and explanation of solution"
+      },
+      {
+        "criteria": "Response to Questions",
+        "description": "Ability to answer questions confidently and accurately"
+      }
+    ]
+  },
+
   "draft-edge": {
     "event_name": "Draft Edge",
     "icon": "🎨",
@@ -38,6 +92,204 @@
       {
         "criteria": "Design Efficiency",
         "description": "Smart and effective use of design tools and elements"
+      }
+    ]
+  },
+  "duo-debug": {
+    "event_name": "Duo Debug",
+    "icon": "💻",
+    "image": "/code-hunt.png",
+    "description": "Duo Debug is a two-member team-based coding and debugging challenge that tests participants’ logical thinking, problem-solving ability, and teamwork. The event focuses on identifying errors, understanding program logic, and solving coding problems under time constraints. Through multiple rounds, participants will analyze outputs, debug broken code, and demonstrate individual coding skills while working as a team.",
+    "rounds": [
+      {
+        "round_name": "Code Quiz",
+        "description": "Each team will be given a set of 30 questions divided into three difficulty levels. The questions will test programming knowledge, logical reasoning, and output prediction skills. Teams must carefully analyze the questions and select the correct answers within the allotted time.",
+        "time_allotted": "30 Minutes"
+      },
+      {
+        "round_name": "Broken Code Find",
+        "description": "Participants will be provided with a broken code snippet along with the expected output. Teams must identify the errors in the program and correct them to produce the correct output. A total of five debugging problems will be given.",
+        "time_allotted": "30 Minutes"
+      },
+      {
+        "round_name": "Blind Code Challenge",
+        "description": "Two programming problems will be given. For a fixed time interval, team members will be separated and required to solve the problems individually. Communication between team members is strictly not allowed during this round, testing each participant’s independent coding ability.",
+        "time_allotted": "40 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "participation": "Team event with exactly two members per team",
+      "languages": "Participants can use C, C++, Java, or Python",
+      "communication": "Discussion between team members is not allowed during the Blind Code round",
+      "fair_play": "Any malpractice or violation of rules will lead to immediate disqualification"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Accuracy",
+        "description": "Correctness of answers and solutions provided by the team"
+      },
+      {
+        "criteria": "Debugging Ability",
+        "description": "Ability to identify and fix errors in the given code efficiently"
+      },
+      {
+        "criteria": "Problem Solving",
+        "description": "Logical thinking and approach used to solve coding challenges"
+      },
+      {
+        "criteria": "Time Efficiency",
+        "description": "Completing the tasks correctly within the given time limit"
+      }
+    ]
+  },
+
+  "prompt-paradox": {
+    "event_name": "Prompt Paradox",
+    "icon": "🤖",
+    "image": "/sympai.png",
+    "description": "Intelligence is artificial. The imagination is entirely yours. Prompt Paradox is a cutting-edge AI challenge where participants use generative tools to solve mysteries, recreate visuals, and engage in high-stakes prompt engineering battles.",
+    "rounds": [
+      {
+        "round_name": "Taboo Image",
+        "description": "Participants must recreate a shown image using AI without using obvious or restricted keywords. Top 30% teams qualify.",
+        "time_allotted": "10 Minutes"
+      },
+      {
+        "round_name": "AI Treasure Hunt",
+        "description": "Scan QR codes to unlock clues. Use AI tools to solve logic puzzles and progress. First 8 teams move to the final.",
+        "time_allotted": "30 Minutes"
+      },
+      {
+        "round_name": "Attack & Defense",
+        "description": "A two-phase battle. Defend your password with AI protection, then attempt to extract your opponent's password in limited attempts.",
+        "time_allotted": "40 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "team_size": "Exactly 2 members per team",
+      "devices": "Computers provided, but personal devices are allowed",
+      "knowledge": "Basic AI knowledge is sufficient",
+      "timing": "Strict adherence to round limits is mandatory",
+      "judging": "Judges' decisions are final and binding"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Prompt Engineering",
+        "description": "Effectiveness and efficiency of AI prompts used"
+      },
+      {
+        "criteria": "Visual Accuracy",
+        "description": "Closeness of AI output to the original target image"
+      },
+      {
+        "criteria": "Strategic Logic",
+        "description": "Effectiveness of defense systems and attack patterns"
+      },
+      {
+        "criteria": "Speed",
+        "description": "Completion time for clue-based challenges"
+      }
+    ]
+  },
+
+  "fusionary": {
+    "event_name": "Fusionary",
+    "icon": "🎬🎵",
+    "image": "/fusionary.png",
+    "description": "Fusionary is a fun non-technical guessing event where participants decode visual clues, music hints, and mixed image puzzles to identify songs or movies. Teams must observe carefully, connect the clues creatively, and guess the correct answer. The event tests creativity, quick thinking, and entertainment knowledge while encouraging teamwork and discussion.",
+    "rounds": [
+      {
+        "round_name": "Musical Fusionary",
+        "description": "Participants are given visual clues that represent lyrics or elements from a song. By interpreting the images and connecting them together, teams must identify the correct song.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Movie Fusionary",
+        "description": "Teams are shown a combination of images that hint at a particular movie. Participants must decode the meaning behind the images and guess the correct movie title.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Jumbled Image Fusion",
+        "description": "A set of multiple images will be shown, but only 3 or 4 of them are relevant clues. Teams must identify the correct images, combine their meanings, and determine the corresponding movie or song.",
+        "time_allotted": "15 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "participation": "Team-based event",
+      "discussion": "Teams can discuss among themselves before submitting the final answer",
+      "answer_submission": "Each team can submit only one final answer per question",
+      "clue_format": "Clues may be given in the form of images, symbols, or visual hints",
+      "scoring": "Points are awarded based on correct answers and speed of response"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Accuracy",
+        "description": "Correctly identifying the movie or song from the given clues"
+      },
+      {
+        "criteria": "Speed",
+        "description": "Teams that answer correctly in less time receive higher points"
+      },
+      {
+        "criteria": "Creative Interpretation",
+        "description": "Ability to interpret visual clues and connect them meaningfully"
+      },
+      {
+        "criteria": "Team Collaboration",
+        "description": "Effective teamwork and discussion while solving clues"
+      }
+    ]
+  },
+
+  "clue-cracker": {
+    "event_name": "Clue Cracker",
+    "icon": "🧩",
+    "image": "/clue-clash.png",
+    "description": "Clue Cracker is a team-based puzzle and guessing event where participants work together to decode clues and identify the correct answer. Teams discuss the hints and submit one final answer per question. Faster correct answers earn higher points, making teamwork, quick thinking, and logical reasoning essential.",
+    "rounds": [
+      {
+        "round_name": "Warm Up",
+        "description": "Teams solve simple and common clues to get familiar with the game format and build confidence.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Famous Picks",
+        "description": "Questions are based on famous personalities, movies, and general knowledge where teams must decode clues to find the correct answer.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Twist Round",
+        "description": "A special round where clues may be given through unique formats such as audio clips, visuals, or creative hint patterns.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Logic & Rapid Final",
+        "description": "The final round includes tricky logic-based clues with fewer hints, requiring teams to think quickly and answer fast.",
+        "time_allotted": "15 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "participation": "Team-based event",
+      "discussion": "Teams can discuss among themselves before giving the final answer",
+      "answer_submission": "Each team can submit only one final answer per question",
+      "scoring": "Points are awarded based on accuracy and speed of answering"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Accuracy",
+        "description": "Correctly identifying the answer from the clues"
+      },
+      {
+        "criteria": "Speed",
+        "description": "Faster correct answers earn higher points"
+      },
+      {
+        "criteria": "Logical Thinking",
+        "description": "Ability to analyze and connect clues effectively"
+      },
+      {
+        "criteria": "Team Collaboration",
+        "description": "Effective teamwork in discussing and solving clues"
       }
     ]
   }

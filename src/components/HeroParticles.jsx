@@ -7,7 +7,7 @@ const HeroParticles = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let particles = [];
-    const particleCount = 120; // Reduced for performance, better quality
+    const particleCount = 120;
 
     let mouse = { x: null, y: null, radius: 170 };
 
@@ -72,7 +72,6 @@ const HeroParticles = () => {
         p.draw();
       });
 
-      // Drawing connections with a gradient feel
       for (let a = 0; a < particles.length; a++) {
         for (let b = a; b < particles.length; b++) {
           const dx = particles[a].x - particles[b].x;
@@ -81,7 +80,7 @@ const HeroParticles = () => {
 
           if (distance < 15000) {
             const opacity = 1 - distance / 15000;
-            ctx.strokeStyle = `rgba(34, 211, 238, ${opacity * 0.2})`; // Cyan connections
+            ctx.strokeStyle = `rgba(34, 211, 238, ${opacity * 0.2})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);

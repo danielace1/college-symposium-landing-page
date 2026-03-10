@@ -29,7 +29,7 @@ const route = createBrowserRouter([
       },
 
       {
-        path: "/code-hunt",
+        path: "/duo-debug",
         element: <CodeHunt />,
       },
       {
@@ -37,7 +37,7 @@ const route = createBrowserRouter([
         element: <Webcraft />,
       },
       {
-        path: "/sympai",
+        path: "/prompt-paradox",
         element: <SympAi />,
       },
 
@@ -46,7 +46,7 @@ const route = createBrowserRouter([
         element: <Adzap />,
       },
       {
-        path: "/clueclash",
+        path: "/cluecracker",
         element: <ClueClash />,
       },
       {

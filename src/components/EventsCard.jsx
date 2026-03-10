@@ -44,16 +44,13 @@ const EventsCard = ({ name, img, details }) => {
       }}
       className="relative h-[450px] w-full rounded-[2rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 group cursor-pointer overflow-hidden transition-colors duration-500 hover:border-yellow-500/50"
     >
-      {/* 1. Animated Hover Background Glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* 2. Floating Image Container */}
       <div
         style={{ transform: "translateZ(50px)" }}
         className="absolute inset-0 p-6 flex flex-col"
       >
         <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-6 border border-white/5">
-          {/* Dark Overlay for text contrast */}
           <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
           <motion.img
             src={img}
@@ -62,7 +59,6 @@ const EventsCard = ({ name, img, details }) => {
           />
         </div>
 
-        {/* 3. Text Content with Depth */}
         <div style={{ transform: "translateZ(30px)" }} className="flex-grow">
           <h2 className="text-white font-bold text-2xl tracking-tighter uppercase mb-2 group-hover:text-yellow-500 transition-colors">
             {name}
@@ -72,7 +68,6 @@ const EventsCard = ({ name, img, details }) => {
           </p>
         </div>
 
-        {/* 4. Action Link */}
         <div
           style={{ transform: "translateZ(40px)" }}
           className="flex items-center gap-2 text-yellow-500 font-bold text-[10px] tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-all mt-4"
@@ -85,7 +80,6 @@ const EventsCard = ({ name, img, details }) => {
         </div>
       </div>
 
-      {/* 5. Edge Highlight (The Neon Border effect) */}
       <div className="absolute inset-0 rounded-[2rem] border-2 border-transparent group-hover:border-yellow-500/20 pointer-events-none transition-colors" />
     </motion.div>
   );

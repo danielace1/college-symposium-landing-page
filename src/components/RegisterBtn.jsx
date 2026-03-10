@@ -3,11 +3,10 @@ import { Rocket } from "lucide-react";
 const RegisterBtn = () => {
   return (
     <div className="relative group">
-      {/* Outer Glow Effect */}
       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-orange-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
 
       <a
-        href="https://forms.gle/2LhNuqZ98DwFEnDe7"
+        href="https://forms.gle/AzkYc3tMdCnkBrVn6"
         target="_blank"
         rel="noopener noreferrer"
         className="relative block"
