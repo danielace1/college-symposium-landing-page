@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-[radial-gradient(circle_at_50%_100%,rgba(234,179,8,0.05),transparent_70%)] pointer-events-none" />
 
       <div className="container mx-auto px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
           <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
             <div className="-ml-4 flex items-center justify-center lg:justify-start">
               <img
@@ -60,13 +60,13 @@ const Footer = () => {
               {[
                 {
                   label: "Student Coordinator",
-                  name: "Santhosh G",
-                  phone: "+91 9489481520",
+                  name: "Allwin",
+                  phone: "+91 9342435661",
                 },
                 {
                   label: "Association Head",
-                  name: "Allwin",
-                  phone: "+91 9342435661",
+                  name: "Sharmila",
+                  phone: "+91 8015527422",
                 },
               ].map((contact, i) => (
                 <a

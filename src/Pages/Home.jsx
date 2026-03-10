@@ -22,7 +22,7 @@ const Home = () => {
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   useEffect(() => {
     const hasSeenModal = localStorage.getItem("hasSeenModal");
@@ -87,7 +87,7 @@ const Home = () => {
           variants={containerVars}
           initial="hidden"
           animate="visible"
-          className="relative z-20 max-w-[1200px] mx-auto text-center flex flex-col items-center"
+          className="relative z-20 max-w-[1200px] mx-auto text-center flex flex-col items-center min-h-[80vh] justify-center"
         >
           <motion.div
             initial={{ y: 30, opacity: 0, scale: 0.9 }}

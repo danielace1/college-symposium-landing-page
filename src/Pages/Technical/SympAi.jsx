@@ -56,17 +56,29 @@ const SympAi = () => {
                 Technical Arena
               </span>
             </motion.div>
+
             <motion.h1
               variants={itemVars}
-              className="text-6xl md:text-9xl font-[900] tracking-tighter uppercase leading-none italic"
+              className="glitch-text text-6xl md:text-9xl font-[900] tracking-tighter uppercase leading-none italic"
             >
               {data.event_name}
               <span className="text-yellow-500">.</span>
             </motion.h1>
+
+            <motion.div variants={itemVars} className="mt-6">
+              <h2 className="text-yellow-500/90 text-xs md:text-sm font-black uppercase tracking-[0.3em] max-w-4xl mx-auto leading-relaxed">
+                Intelligence is artificial.{" "}
+                <span className="text-white">
+                  The imagination is entirely yours.
+                </span>
+              </h2>
+            </motion.div>
+
             <motion.div
               variants={itemVars}
-              className="h-px w-24 bg-yellow-500/30 mx-auto my-8 md:mt-10 md:mb-10"
+              className="h-px w-24 bg-yellow-500/30 mx-auto my-8"
             />
+
             <motion.p
               variants={itemVars}
               className="text-white/40 text-sm md:text-lg max-w-3xl mx-auto leading-relaxed font-medium italic px-4"
