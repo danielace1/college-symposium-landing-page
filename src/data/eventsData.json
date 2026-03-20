@@ -147,7 +147,7 @@
     "event_name": "Prompt Paradox",
     "icon": "🤖",
     "image": "/sympai.png",
-    "description": "Intelligence is artificial. The imagination is entirely yours. Prompt Paradox is a cutting-edge AI challenge where participants use generative tools to solve mysteries, recreate visuals, and engage in high-stakes prompt engineering battles.",
+    "description": "Prompt Paradox is a cutting-edge AI challenge where participants use generative tools to solve mysteries, recreate visuals, and engage in high-stakes prompt engineering battles.",
     "rounds": [
       {
         "round_name": "Taboo Image",
