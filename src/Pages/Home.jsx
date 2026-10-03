@@ -115,7 +115,7 @@ const Home = () => {
 
           <motion.div variants={itemVars} className="relative mb-2 md:mb-4">
             <h1 className="metallic-text whitespace-nowrap text-[12vw] sm:text-[80px] md:text-[110px] lg:text-[140px] font-[900] leading-none tracking-[0.05em] uppercase font-['Plus_Jakarta_Sans']">
-              SPARZO
+              GENORA
               <span className="text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.5)] ml-4">
                 ’26
               </span>
@@ -355,11 +355,11 @@ const Home = () => {
 
               <div className="relative group w-full max-w-full px-4 flex justify-center items-center">
                 <h1 className="jersey-10-regular text-[15vw] min-[450px]:text-7xl md:text-9xl lg:text-[10rem] text-white tracking-wider md:tracking-widest transition-all duration-700 md:group-hover:tracking-[0.2em] group-hover:text-yellow-500 leading-none whitespace-nowrap">
-                  SPARZO<span className="text-yellow-500">’26</span>
+                  GENORA<span className="text-yellow-500">’26</span>
                 </h1>
 
                 <h1 className="jersey-10-regular absolute top-0 left-0 w-full text-center hidden md:block md:text-9xl lg:text-[10rem] text-yellow-500 tracking-widest opacity-20 blur-xl pointer-events-none group-hover:tracking-[0.2em] leading-none whitespace-nowrap">
-                  SPARZO’26
+                  GENORA’26
                 </h1>
 
                 <div className="absolute -bottom-2 w-1/2 h-1 bg-yellow-500/20 blur-md md:hidden group-hover:bg-yellow-500/50 transition-all duration-500" />

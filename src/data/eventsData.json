@@ -53,7 +53,7 @@
     ]
   },
 
-  "draft-edge": {
+  "ai-verse": {
     "event_name": "Draft Edge",
     "icon": "🎨",
     "image": "/webcraft.png",
@@ -95,7 +95,7 @@
       }
     ]
   },
-  "duo-debug": {
+  "code-volt": {
     "event_name": "Duo Debug",
     "icon": "💻",
     "image": "/code-hunt.png",
@@ -192,7 +192,7 @@
     ]
   },
 
-  "fusionary": {
+  "reels-and-rhythm": {
     "event_name": "Fusionary",
     "icon": "🎬🎵",
     "image": "/fusionary.png",
@@ -241,7 +241,60 @@
     ]
   },
 
-  "clue-cracker": {
+  "wit-and-will": {
+    "event_name": "Clue Cracker",
+    "icon": "🧩",
+    "image": "/clue-clash.png",
+    "description": "Clue Cracker is a team-based puzzle and guessing event where participants work together to decode clues and identify the correct answer. Teams discuss the hints and submit one final answer per question. Faster correct answers earn higher points, making teamwork, quick thinking, and logical reasoning essential.",
+    "rounds": [
+      {
+        "round_name": "Warm Up",
+        "description": "Teams solve simple and common clues to get familiar with the game format and build confidence.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Famous Picks",
+        "description": "Questions are based on famous personalities, movies, and general knowledge where teams must decode clues to find the correct answer.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Twist Round",
+        "description": "A special round where clues may be given through unique formats such as audio clips, visuals, or creative hint patterns.",
+        "time_allotted": "15 Minutes"
+      },
+      {
+        "round_name": "Logic & Rapid Final",
+        "description": "The final round includes tricky logic-based clues with fewer hints, requiring teams to think quickly and answer fast.",
+        "time_allotted": "15 Minutes"
+      }
+    ],
+    "rules_and_regulations": {
+      "participation": "Team-based event",
+      "discussion": "Teams can discuss among themselves before giving the final answer",
+      "answer_submission": "Each team can submit only one final answer per question",
+      "scoring": "Points are awarded based on accuracy and speed of answering"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Accuracy",
+        "description": "Correctly identifying the answer from the clues"
+      },
+      {
+        "criteria": "Speed",
+        "description": "Faster correct answers earn higher points"
+      },
+      {
+        "criteria": "Logical Thinking",
+        "description": "Ability to analyze and connect clues effectively"
+      },
+      {
+        "criteria": "Team Collaboration",
+        "description": "Effective teamwork in discussing and solving clues"
+      }
+    ]
+  },
+
+  "player-auction": {
     "event_name": "Clue Cracker",
     "icon": "🧩",
     "image": "/clue-clash.png",

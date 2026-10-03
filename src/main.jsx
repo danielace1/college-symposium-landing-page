@@ -7,7 +7,6 @@ import Home from "./Pages/Home.jsx";
 import CodeHunt from "./Pages/Technical/CodeHunt.jsx";
 import Webcraft from "./Pages/Technical/Webcraft.jsx";
 import SympAi from "./Pages/Technical/SympAi.jsx";
-import Adzap from "./Pages/Non-Technical/Adzap.jsx";
 import ClueClash from "./Pages/Non-Technical/ClueClash.jsx";
 import Fusionary from "./Pages/Non-Technical/Fusionary.jsx";
 import CineWhiz from "./Pages/Online-Events/CineWhiz.jsx";
@@ -29,11 +28,11 @@ const route = createBrowserRouter([
       },
 
       {
-        path: "/duo-debug",
+        path: "/code-volt",
         element: <CodeHunt />,
       },
       {
-        path: "/draftedge",
+        path: "/ai-verse",
         element: <Webcraft />,
       },
       {
@@ -41,10 +40,6 @@ const route = createBrowserRouter([
         element: <SympAi />,
       },
 
-      {
-        path: "/adzap",
-        element: <Adzap />,
-      },
       {
         path: "/cluecracker",
         element: <ClueClash />,
