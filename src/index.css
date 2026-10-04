@@ -30,7 +30,10 @@ button {
   color: white;
 }
 
+/* -------------------------------- */
 /* Scrollbar */
+/* -------------------------------- */
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -47,35 +50,26 @@ button {
   background: #7c3aed;
 }
 
-/* Architectural grid + violet atmosphere */
+/* -------------------------------- */
+/* GENORA BACKGROUND */
+/* -------------------------------- */
+
 .genora-grid {
   background-image:
-    /* Main violet atmosphere */
     radial-gradient(
-      circle at 28% 28%,
-      rgba(124, 58, 237, 0.13) 0%,
-      rgba(124, 58, 237, 0.055) 22%,
-      transparent 48%
+      circle at 30% 30%,
+      rgba(124, 58, 237, 0.07),
+      transparent 42%
     ),
-    /* Right-side violet atmosphere */
     radial-gradient(
-        circle at 82% 30%,
-        rgba(139, 92, 246, 0.1) 0%,
-        rgba(139, 92, 246, 0.045) 20%,
-        transparent 42%
-      ),
-    /* Bottom atmosphere */
-    radial-gradient(
-        ellipse at 35% 100%,
-        rgba(79, 70, 229, 0.1) 0%,
-        transparent 45%
-      ),
-    /* Architectural grid */
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      circle at 78% 32%,
+      rgba(139, 92, 246, 0.05),
+      transparent 38%
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 
   background-size:
-    100% 100%,
     100% 100%,
     100% 100%,
     72px 72px,
@@ -84,62 +78,60 @@ button {
   background-position:
     center,
     center,
-    center,
     0 0,
     0 0;
-
-  opacity: 0.9;
-
-  mask-image: radial-gradient(
-    ellipse at center,
-    black 15%,
-    rgba(0, 0, 0, 0.85) 55%,
-    rgba(0, 0, 0, 0.35) 80%,
-    transparent 100%
-  );
 }
 
-/* Atmospheric particles */
+/* -------------------------------- */
+/* STATIC PARTICLES */
+/* -------------------------------- */
+
 .genora-particles {
-  opacity: 0.38;
+  opacity: 0.14;
 
-  background-image:
-    radial-gradient(circle, rgba(196, 181, 253, 0.85) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(139, 92, 246, 0.65) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1.5px);
-
-  background-size:
-    140px 140px,
-    190px 190px,
-    260px 260px;
-
-  background-position:
-    0 0,
-    40px 80px,
-    100px 30px;
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 5%,
-    black 25%,
-    black 70%,
-    transparent 95%
+  background-image: radial-gradient(
+    circle,
+    rgba(196, 181, 253, 0.65) 1px,
+    transparent 1.5px
   );
 
-  animation: particleDrift 35s linear infinite;
+  background-size: 180px 180px;
+  background-position: 0 0;
 }
 
-/* film grain */
+/* -------------------------------- */
+/* FILM GRAIN */
+/* -------------------------------- */
+
 .genora-noise {
-  background-image: url("../public/fractal-noise.svg");
+  background-image: url("/fractal-noise.svg");
+  background-repeat: repeat;
+  pointer-events: none;
+  opacity: 0.012;
 }
 
-@keyframes particleDrift {
-  from {
-    transform: translate3d(0, 0, 0);
+/* -------------------------------- */
+/* PERFORMANCE */
+/* -------------------------------- */
+
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* -------------------------------- */
+/* ACCESSIBILITY */
+/* -------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  to {
-    transform: translate3d(-70px, -45px, 0);
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
