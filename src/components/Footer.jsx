@@ -1,5 +1,4 @@
 import { Mail, Instagram, Linkedin, Phone, MapPin, Globe } from "lucide-react";
-import { motion } from "framer-motion";
 
 const Footer = () => {
   return (

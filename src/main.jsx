@@ -4,17 +4,16 @@ import App from "./App.jsx";
 import "./index.css";
 import PaperPresentation from "./Pages/Technical/PaperPresentation.jsx";
 import Home from "./Pages/Home.jsx";
-import CodeHunt from "./Pages/Technical/CodeHunt.jsx";
-import Webcraft from "./Pages/Technical/Webcraft.jsx";
-import SympAi from "./Pages/Technical/SympAi.jsx";
-import ClueClash from "./Pages/Non-Technical/ClueClash.jsx";
-import Fusionary from "./Pages/Non-Technical/Fusionary.jsx";
-import CineWhiz from "./Pages/Online-Events/CineWhiz.jsx";
-import ShutterStories from "./Pages/Online-Events/ShutterStories.jsx";
+import CodeVolt from "./Pages/Technical/CodeVolt.jsx";
+import AiVerse from "./Pages/Technical/AiVerse.jsx";
+import PromptParadox from "./Pages/Technical/PromptParadox.jsx";
+import WitAndWill from "./Pages/Non-Technical/WitAndWill.jsx";
+import ReelsAndRhythm from "./Pages/Non-Technical/ReelsAndRhythm.jsx";
+import PlayerAuction from "./Pages/Non-Technical/PlayerAuction.jsx";
 
 const route = createBrowserRouter([
   {
-    paths: "/",
+    path: "/",
     element: <App />,
     children: [
       {
@@ -29,32 +28,28 @@ const route = createBrowserRouter([
 
       {
         path: "/code-volt",
-        element: <CodeHunt />,
+        element: <CodeVolt />,
       },
       {
         path: "/ai-verse",
-        element: <Webcraft />,
+        element: <AiVerse />,
       },
       {
         path: "/prompt-paradox",
-        element: <SympAi />,
+        element: <PromptParadox />,
       },
 
       {
-        path: "/cluecracker",
-        element: <ClueClash />,
+        path: "/wit-and-will",
+        element: <WitAndWill />,
       },
       {
-        path: "/fusionary",
-        element: <Fusionary />,
+        path: "/reels-and-rhythm",
+        element: <ReelsAndRhythm />,
       },
       {
-        path: "/cinewhiz",
-        element: <CineWhiz />,
-      },
-      {
-        path: "/shutterstories",
-        element: <ShutterStories />,
+        path: "/player-auction",
+        element: <PlayerAuction />,
       },
     ],
   },

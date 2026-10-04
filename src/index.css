@@ -1,28 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Chrome / Violet Metallic Text matching the logo */
 .metallic-text {
-  background: linear-gradient(to bottom, #ffffff 40%, #a3a3a3 100%);
+  background: linear-gradient(180deg, #ffffff 20%, #d8b4fe 65%, #a855f7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 1px rgba(216, 180, 254, 0.2);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
   transition: all 0.3s ease;
 }
 
-/* Button hover glow */
+/* Card hover glow */
 .group:hover .glass-card {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(192, 132, 252, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -34,11 +35,11 @@
 @keyframes mobileNeonPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 5px rgba(234, 179, 8, 0.2));
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
     opacity: 1;
   }
   50% {
-    filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.5));
+    filter: drop-shadow(0 0 18px rgba(192, 132, 252, 0.6));
     opacity: 0.9;
   }
 }
@@ -54,8 +55,8 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: rgba(234, 179, 8, 0.1);
-  box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+  background: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
   animation: scanline 3s linear infinite;
   pointer-events: none;
   opacity: 0.5;
@@ -73,12 +74,12 @@
 @keyframes atmosphericGlow {
   0%,
   100% {
-    opacity: 0.3;
+    opacity: 0.25;
     transform: scale(1);
   }
   50% {
-    opacity: 0.6;
-    transform: scale(1.1);
+    opacity: 0.5;
+    transform: scale(1.08);
   }
 }
 
@@ -87,7 +88,7 @@
 }
 
 .happenings-btns {
-  @apply relative overflow-hidden flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-yellow-500/30 transition-all text-white font-bold tracking-widest uppercase text-sm;
+  @apply relative overflow-hidden flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/30 transition-all text-white font-bold tracking-widest uppercase text-sm;
 }
 
 #technical-events h3,
@@ -97,6 +98,7 @@
   letter-spacing: -0.02em;
 }
 
+/* Violet Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -104,12 +106,11 @@
   background: #020202;
 }
 ::-webkit-scrollbar-thumb {
-  background: #eab308;
+  background: #a855f7;
   border-radius: 10px;
 }
-
-.group-hover\:border-fuchsia-600 {
-  border-color: #eab308 !important;
+::-webkit-scrollbar-thumb:hover {
+  background: #c084fc;
 }
 
 .EventBentoCard {
@@ -130,31 +131,13 @@
   z-index: 9999 !important;
 }
 
-/* Modal Content Glass Polish */
 .ReactModal__Content {
   border: none !important;
   background: transparent !important;
 }
 
-.shadow-gold {
-  box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
-}
-
-@keyframes modalPop {
-  from {
-    transform: scale(0.9) translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.shadow-purple {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
 }
 
 button {
@@ -162,56 +145,45 @@ button {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+/* Cyber Glitch Effect */
 .glitch-text {
   position: relative;
   text-shadow:
-    0.05em 0 0 rgba(255, 0, 0, 0.75),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
-    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-  animation: glitch 500ms infinite;
+    0.05em 0 0 rgba(168, 85, 247, 0.8),
+    -0.03em -0.05em 0 rgba(56, 189, 248, 0.7),
+    0.025em 0.05em 0 rgba(236, 72, 153, 0.7);
+  animation: glitch 600ms infinite;
 }
 
 @keyframes glitch {
   0% {
     text-shadow:
-      0.05em 0 0 rgba(255, 0, 0, 0.75),
-      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-      -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  14% {
-    text-shadow:
-      0.05em 0 0 rgba(255, 0, 0, 0.75),
-      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-      -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+      0.05em 0 0 rgba(168, 85, 247, 0.8),
+      -0.05em -0.025em 0 rgba(56, 189, 248, 0.7),
+      -0.025em 0.05em 0 rgba(236, 72, 153, 0.7);
   }
   15% {
     text-shadow:
-      -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+      -0.05em -0.025em 0 rgba(168, 85, 247, 0.8),
+      0.025em 0.025em 0 rgba(56, 189, 248, 0.7),
+      -0.05em -0.05em 0 rgba(236, 72, 153, 0.7);
   }
   49% {
     text-shadow:
-      -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+      -0.05em -0.025em 0 rgba(168, 85, 247, 0.8),
+      0.025em 0.025em 0 rgba(56, 189, 248, 0.7),
+      -0.05em -0.05em 0 rgba(236, 72, 153, 0.7);
   }
   50% {
     text-shadow:
-      0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-      0.05em 0 0 rgba(0, 255, 0, 0.75),
-      0 -0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  99% {
-    text-shadow:
-      0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-      0.05em 0 0 rgba(0, 255, 0, 0.75),
-      0 -0.05em 0 rgba(0, 0, 255, 0.75);
+      0.025em 0.05em 0 rgba(168, 85, 247, 0.8),
+      0.05em 0 0 rgba(56, 189, 248, 0.7),
+      0 -0.05em 0 rgba(236, 72, 153, 0.7);
   }
   100% {
     text-shadow:
-      -0.025em 0 0 rgba(255, 0, 0, 0.75),
-      -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
-      -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+      -0.025em 0 0 rgba(168, 85, 247, 0.8),
+      -0.025em -0.025em 0 rgba(56, 189, 248, 0.7),
+      0.025em 0.05em 0 rgba(236, 72, 153, 0.7);
   }
 }
