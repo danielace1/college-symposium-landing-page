@@ -1,13 +1,14 @@
-import { useState, useEffect, useMemo } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Link as Scroll } from "react-scroll";
-import { Link as RouterLink } from "react-router-dom";
-import Modal from "react-modal";
-import { Rocket, Calendar, Trophy, Award, ChevronDown } from "lucide-react";
-import EventsCard from "../components/EventsCard";
-import HeroParticles from "../components/HeroParticles";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowDown,
+  ArrowDownRight,
+  ArrowUpRight,
+  CalendarDays,
+  Sparkles,
+} from "lucide-react";
 
-Modal.setAppElement("#root");
+const EVENT_DATE = new Date("2026-10-14T00:00:00+05:30").getTime();
 
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,582 +17,484 @@ const Home = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const targetDate = useMemo(() => new Date("2026-03-24T09:00:00"), []);
-
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   useEffect(() => {
-    const hasSeenModal = localStorage.getItem("hasSeenModal");
+    const updateCountdown = () => {
+      const difference = EVENT_DATE - Date.now();
 
-    if (!hasSeenModal) {
-      setIsModalOpen(true);
-      localStorage.setItem("hasSeenModal", "true");
-    }
-
-    const interval = setInterval(() => {
-      const now = new Date();
-      const distance = targetDate - now;
-
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
+      if (difference <= 0) {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
       }
-    }, 1000);
+
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      });
+    };
+
+    updateCountdown();
+
+    const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, [targetDate]);
-
-  const containerVars = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-    },
-  };
-
-  const itemVars = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  }, []);
 
   return (
-    <div className="">
-      {/* Banner */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020202] px-4 pt-1 pb-2">
-        <HeroParticles />
+    <main className="relative min-h-screen overflow-hidden bg-[#050507] text-white">
+      {/* ATMOSPHERE */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Base atmosphere */}
+        <div className="absolute inset-0 bg-[#050507]" />
 
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 6, repeat: Infinity }}
-            className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[50vw] h-[30vw] bg-yellow-600/10 blur-[100px] rounded-full"
-          />
-        </div>
-
+        {/* Large ambient purple bloom */}
         <motion.div
-          style={{ y: y1, opacity }}
-          variants={containerVars}
-          initial="hidden"
-          animate="visible"
-          className="relative z-20 max-w-[1200px] mx-auto text-center flex flex-col items-center min-h-[80vh] justify-center"
+          className="absolute left-[28%] top-[18%] h-[700px] w-[700px] rounded-full bg-violet-600/[0.14] blur-[140px]"
+          animate={{
+            scale: [1, 1.12, 1],
+            opacity: [0.45, 0.7, 0.45],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Logo-side atmosphere */}
+        <motion.div
+          className="absolute right-[8%] top-[12%] h-[500px] w-[500px] rounded-full bg-purple-500/[0.11] blur-[120px]"
+          animate={{
+            scale: [1, 1.08, 1],
+            x: [0, -20, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Bottom atmosphere */}
+        <div className="absolute -bottom-[250px] left-[15%] h-[600px] w-[800px] rounded-full bg-indigo-500/[0.08] blur-[150px]" />
+
+        {/* Architectural grid */}
+        <div className="genora-grid absolute inset-0" />
+
+        <div className="absolute inset-y-0 left-[35%] w-px bg-gradient-to-b from-transparent via-white/[0.025] to-transparent" />
+
+        <div className="absolute inset-y-0 left-[60%] w-px bg-gradient-to-b from-transparent via-violet-400/[0.025] to-transparent" />
+
+        <div className="absolute inset-y-0 right-[18%] w-px bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+
+        <div className="absolute left-0 right-0 top-[32%] h-px bg-gradient-to-r from-transparent via-white/[0.025] to-transparent" />
+
+        <div className="absolute left-0 right-0 top-[72%] h-px bg-gradient-to-r from-transparent via-violet-400/[0.025] to-transparent" />
+
+        {/* Moving light */}
+        <motion.div
+          className="absolute -left-[15%] top-[20%] h-px w-[55%] bg-gradient-to-r from-transparent via-violet-400/[0.12] to-transparent"
+          animate={{
+            x: ["0%", "240%"],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Tiny atmospheric particles */}
+        <div className="genora-particles absolute inset-0" />
+
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.38)_100%)]" />
+
+        {/* Noise */}
+        <div className="genora-noise absolute inset-0 opacity-[0.018]" />
+      </div>
+
+      {/* HEADER */}
+
+      <header className="relative z-50 flex items-center justify-between px-5 py-5 sm:px-8 sm:py-7 lg:px-12">
+        {/* Brand */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-3"
         >
-          <motion.div
-            initial={{ y: 30, opacity: 0, scale: 0.9 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative md:mb-2"
-          >
-            <div className="absolute -inset-4 bg-yellow-500/10 blur-2xl rounded-full" />
+          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.035] backdrop-blur-xl sm:h-12 sm:w-12">
+            <div className="absolute inset-0 bg-violet-500/10" />
+
             <img
-              src="/sparzo26-logo.png"
-              alt="SPARZO Phoenix"
-              className="w-28 h-28 md:w-36 md:h-36 object-contain logo-glow relative z-10"
+              src="/genora-26-logo.ico"
+              alt="GENORA 2026"
+              className="relative h-full w-full object-cover p-0.5 rounded-full"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVars}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-yellow-500/20 mb-6"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_8px_#eab308]" />
-            <span className="text-[8px] md:text-[10px] font-bold text-yellow-500 uppercase tracking-[0.3em]">
-              National Technical Symposium • 2026
-            </span>
-          </motion.div>
+          <div className="hidden sm:block">
+            <p className="font-mono text-[8px] tracking-[0.35em] text-white/35">
+              GCE TIRUNELVELI
+            </p>
 
-          <motion.div variants={itemVars} className="relative mb-2 md:mb-4">
-            <h1 className="metallic-text whitespace-nowrap text-[12vw] sm:text-[80px] md:text-[110px] lg:text-[140px] font-[900] leading-none tracking-[0.05em] uppercase font-['Plus_Jakarta_Sans']">
-              GENORA
-              <span className="text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.5)] ml-4">
+            <p className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-white/75">
+              CSE ASSOCIATION
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Navigation */}
+        <motion.button
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.025] px-4 py-2.5 font-mono text-[9px] font-medium uppercase tracking-[0.25em] text-white/60 backdrop-blur-xl transition-all duration-500 hover:border-violet-400/30 hover:bg-violet-500/[0.08] hover:text-white"
+        >
+          Explore
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/[0.06] transition-all duration-500 group-hover:rotate-45 group-hover:bg-violet-500/20">
+            <ArrowDownRight size={12} />
+          </span>
+        </motion.button>
+      </header>
+
+      {/* HERO */}
+
+      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-90px)] max-w-[1500px] flex-col justify-center px-5 pb-8 pt-10 sm:px-8 lg:px-12 lg:pt-0">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-7 flex items-center gap-3"
+            >
+              <span className="h-px w-8 bg-violet-400 sm:w-12" />
+
+              <span className="font-mono text-[8px] font-medium uppercase tracking-[0.38em] text-violet-300/80 sm:text-[9px]">
+                National Level Technical Symposium
+              </span>
+            </motion.div>
+
+            {/* Main title */}
+            <div className="relative">
+              <motion.h1
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="select-none font-['Syncopate'] text-[17vw] font-bold leading-[0.78] tracking-[-0.09em] text-white sm:text-[15vw] lg:text-[9.5vw] xl:text-[9rem]"
+              >
+                GENORA
+              </motion.h1>
+
+              {/* Animated light sweep */}
+              <motion.div
+                initial={{ x: "-120%" }}
+                animate={{ x: "120%" }}
+                transition={{
+                  duration: 2,
+                  delay: 1,
+                  ease: "easeInOut",
+                }}
+                className="pointer-events-none absolute inset-y-0 left-0 w-1/3 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-xl"
+              />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="mt-8 flex items-end gap-5 sm:mt-10"
+            >
+              <span className="font-['Syncopate'] text-5xl font-bold leading-none tracking-[-0.08em] text-violet-300 sm:text-7xl">
                 ’26
               </span>
-            </h1>
-          </motion.div>
 
-          {/* Date & Venue Badge */}
+              <div className="mb-1 h-10 w-px bg-white/10" />
+
+              <div className="mb-1">
+                <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30">
+                  One day
+                </p>
+
+                <p className="mt-1 text-xs font-medium text-white/60 sm:text-sm">
+                  Infinite possibilities.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Desc */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75, duration: 0.8 }}
+              className="mt-8 max-w-xl text-sm leading-7 text-white/40 sm:mt-9 sm:text-base sm:leading-8"
+            >
+              Where technology meets imagination. A day of code, intelligence,
+              creativity and competition built for the next generation.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="mt-8 flex flex-col gap-3 sm:flex-row"
+            >
+              <button className="group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full bg-violet-500 px-6 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_35px_rgba(139,92,246,0.25)] transition-all duration-500 hover:-translate-y-1 hover:bg-violet-400 hover:shadow-[0_15px_45px_rgba(139,92,246,0.35)]">
+                <span className="relative z-10">Register Now</span>
+
+                <ArrowUpRight
+                  size={14}
+                  className="relative z-10 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              </button>
+
+              <button className="group inline-flex h-12 items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.02] px-6 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/55 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] hover:text-white">
+                Explore Events
+                <ArrowDown
+                  size={13}
+                  className="transition-transform duration-500 group-hover:translate-y-1"
+                />
+              </button>
+            </motion.div>
+          </div>
+
+          {/* RIGHT VISUAL */}
+
           <motion.div
-            variants={itemVars}
-            className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mt-4"
+            initial={{ opacity: 0, scale: 0.9, x: 30 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.3,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="relative mx-auto w-full max-w-[520px] lg:ml-auto"
           >
-            <div className="flex flex-col items-center md:items-end">
-              <span className="text-yellow-500 font-black text-sm md:text-lg uppercase tracking-[0.2em]">
-                March 24, 2026
-              </span>
-              <span className="text-white/30 text-[8px] uppercase tracking-[0.4em] font-bold">
-                The Grand Arena
-              </span>
-            </div>
+            {/* Ambient glow */}
+            <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/10 blur-[100px]" />
 
-            <div className="hidden md:block w-[1px] h-10 bg-gradient-to-b from-transparent via-yellow-500/40 to-transparent" />
-
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <p className="text-white/60 text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium">
-                Government College of Engineering
-              </p>
-              <p className="text-white/30 text-[8px] tracking-[0.3em] uppercase mt-1">
-                Tirunelveli, Tamil Nadu
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Countdown Section */}
-          <motion.div
-            variants={itemVars}
-            className="mt-10 md:mt-12 grid grid-cols-4 gap-2 md:gap-4 w-full max-w-3xl"
-          >
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <div key={unit} className="relative group">
-                <div className="relative overflow-hidden flex flex-col items-center justify-center py-6 md:py-8 rounded-2xl glass-card border-white/5 transition-all duration-500 group-hover:border-yellow-500/30">
-                  <span className="text-3xl md:text-5xl font-bold text-white tabular-nums tracking-tighter">
-                    {String(value).padStart(2, "0")}
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-5">
+              {/* Top status */}
+              <div className="relative z-20 flex items-center justify-between border-b border-white/[0.07] pb-4">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-50" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
                   </span>
-                  <span className="text-[7px] md:text-[8px] uppercase tracking-[0.3em] text-yellow-500 mt-1 font-black">
-                    {unit}
+
+                  <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/35">
+                    System active
                   </span>
                 </div>
+
+                <Sparkles size={14} className="text-violet-300/50" />
               </div>
-            ))}
-          </motion.div>
 
-          {/* Buttons */}
-          <motion.div
-            variants={itemVars}
-            className="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center"
-          >
-            <a
-              href="https://forms.gle/AzkYc3tMdCnkBrVn6"
-              target="_blank"
-              className="group relative"
-            >
-              <div className="absolute -inset-0.5 bg-yellow-500 rounded-full blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
-              <button className="relative flex items-center gap-3 px-10 py-4 bg-yellow-500 text-black font-black text-xs tracking-[0.2em] uppercase rounded-full hover:scale-105 active:scale-95 transition-all">
-                <Rocket
-                  size={16}
-                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                />
-                Register Now
-              </button>
-            </a>
-
-            <Scroll
-              to="technical-events"
-              smooth={true}
-              duration={500}
-              className="group cursor-pointer"
-            >
-              <button className="flex items-center gap-3 px-10 py-4 glass-card border-white/10 text-white font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-white/5 hover:border-white/20 active:scale-95 transition-all">
-                <Calendar size={16} className="text-yellow-500" />
-                View Events
-              </button>
-            </Scroll>
-          </motion.div>
-
-          {/* Perks */}
-          <div className="mt-8 flex justify-center gap-6 opacity-20">
-            <div className="flex items-center gap-2 text-[8px] font-bold tracking-widest uppercase">
-              <Trophy size={12} /> 50K Prizes
-            </div>
-            <div className="flex items-center gap-2 text-[8px] font-bold tracking-widest uppercase">
-              <Award size={12} /> Certificates
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-6 flex flex-col items-center gap-1 opacity-20 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-[1px] h-6 bg-gradient-to-b from-yellow-500 to-transparent" />
-        </motion.div>
-      </section>
-
-      {/* Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        overlayClassName="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-sm bg-black/70"
-        className="relative w-[85%] max-w-[320px] outline-none overflow-visible"
-      >
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="relative w-full rounded-[2rem] border border-yellow-500/20 bg-[#0A0A0A] p-7 overflow-hidden shadow-2xl"
-        >
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="absolute top-4 right-4 z-20 p-1.5 rounded-full bg-white/5 border border-white/10 text-white/40 hover:text-yellow-500 hover:bg-yellow-500/10 transition-all duration-300"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-
-          <img
-            src="/sparzo26-logo.png"
-            alt="sparzo"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 opacity-[0.08] pointer-events-none"
-          />
-
-          <div className="relative z-10 text-center">
-            {/* Icon Header */}
-            <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500/10 border border-yellow-500/20">
-              <Trophy size={20} className="text-yellow-500" />
-            </div>
-
-            <h2 className="text-xl font-[900] text-white uppercase tracking-tighter">
-              Exclusive <span className="text-yellow-500">Perks</span>
-            </h2>
-
-            <div className="h-px w-8 bg-white/10 mx-auto mt-3 mb-6" />
-
-            {/* Perks List */}
-            <div className="space-y-3">
-              {[
-                { icon: "💸", title: "Mega Prize Pool" },
-                { icon: "📜", title: "Global Certification" },
-              ].map((item, i) => (
+              {/* Logo visual */}
+              <div className="relative flex min-h-[260px] items-center justify-center sm:min-h-[310px]">
+                {/* Orbit */}
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 24,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute h-[230px] w-[230px] rounded-full border border-dashed border-violet-400/15 sm:h-[280px] sm:w-[280px]"
                 >
-                  <span className="text-lg">{item.icon}</span>
-                  <h4 className="text-[10px] font-black text-white/70 uppercase tracking-[0.2em]">
-                    {item.title}
-                  </h4>
+                  <span className="absolute right-[8%] top-[12%] h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_18px_#a78bfa]" />
                 </motion.div>
-              ))}
-            </div>
 
-            {/* Primary Action */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="mt-8 w-full py-4 bg-yellow-500 text-black font-[900] text-[11px] uppercase tracking-[0.3em] rounded-2xl hover:bg-yellow-400 transition-all active:scale-95 shadow-xl shadow-yellow-500/10"
-            >
-              Enter Arena
-            </button>
-          </div>
+                {/* Inner ring */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.04, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute h-[190px] w-[190px] rounded-full border border-violet-400/10 sm:h-[230px] sm:w-[230px]"
+                />
 
-          {/* Corner Details */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-yellow-500/20 rounded-tl-[2rem]" />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-yellow-500/20 rounded-br-[2rem]" />
-        </motion.div>
-      </Modal>
+                {/* Logo */}
+                <motion.img
+                  animate={{
+                    y: [0, -7, 0],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  src="/genora-26-logo.png"
+                  alt="GENORA 2026"
+                  className="relative z-10 w-[60%] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)] rounded-full"
+                />
+              </div>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#070707] via-[#0b0b0b] to-[#070707] py-14 md:py-24">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-yellow-600/5 blur-[120px] rounded-full pointer-events-none" />
+              {/* Date */}
+              <div className="relative grid grid-cols-[1fr_auto] items-end gap-5 border-t border-white/[0.07] pt-5">
+                <div>
+                  <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30">
+                    The day
+                  </p>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVars}
-          className="container relative z-10 mx-auto px-6 text-center"
-        >
-          <motion.div variants={itemVars} className="space-y-4">
-            <h3 className="text-yellow-500/80 text-xs md:text-sm font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase">
-              Government College of Engineering, Tirunelveli
-            </h3>
-            <div className="flex items-center justify-center gap-4">
-              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-white/20" />
-              <p className="text-white/60 text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium">
-                Affiliated to Anna University
-              </p>
-              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-white/20" />
-            </div>
-          </motion.div>
+                  <div className="mt-2 flex items-end gap-3">
+                    <span className="font-['Syncopate'] text-5xl font-bold leading-none tracking-[-0.08em] text-white sm:text-6xl">
+                      14
+                    </span>
 
-          <motion.div
-            variants={itemVars}
-            className="mt-10 mb-12 relative inline-block p-8 rounded-[2.5rem] border border-white/5 bg-white/[0.01] backdrop-blur-sm"
-          >
-            <h4 className="text-white/40 text-[9px] md:text-xs tracking-[0.5em] uppercase mb-3 pl-[0.8em]">
-              Department of
-            </h4>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
-              Computer Science <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-yellow-500">
-                & Engineering
-              </span>
-            </h2>
+                    <div className="mb-1">
+                      <p className="font-mono text-[9px] font-bold tracking-[0.2em] text-violet-300">
+                        OCT
+                      </p>
 
-            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-yellow-500/30 rounded-tl-3xl" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-yellow-500/30 rounded-br-3xl" />
-          </motion.div>
+                      <p className="mt-1 font-mono text-[7px] tracking-[0.2em] text-white/25">
+                        2026
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-          <motion.div variants={itemVars} className="space-y-8 w-full">
-            <div className="flex flex-col items-center">
-              <span className="text-white/30 text-[10px] md:text-[12px] tracking-[0.6em] md:tracking-[1em] uppercase mb-4 md:mb-6 pl-[0.6em] md:pl-[1em]">
-                Proudly Presents
-              </span>
-
-              <div className="relative group w-full max-w-full px-4 flex justify-center items-center">
-                <h1 className="jersey-10-regular text-[15vw] min-[450px]:text-7xl md:text-9xl lg:text-[10rem] text-white tracking-wider md:tracking-widest transition-all duration-700 md:group-hover:tracking-[0.2em] group-hover:text-yellow-500 leading-none whitespace-nowrap">
-                  GENORA<span className="text-yellow-500">’26</span>
-                </h1>
-
-                <h1 className="jersey-10-regular absolute top-0 left-0 w-full text-center hidden md:block md:text-9xl lg:text-[10rem] text-yellow-500 tracking-widest opacity-20 blur-xl pointer-events-none group-hover:tracking-[0.2em] leading-none whitespace-nowrap">
-                  GENORA’26
-                </h1>
-
-                <div className="absolute -bottom-2 w-1/2 h-1 bg-yellow-500/20 blur-md md:hidden group-hover:bg-yellow-500/50 transition-all duration-500" />
+                <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/30">
+                  <CalendarDays size={14} />
+                </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
-      </section>
 
-      {/* Events */}
-      <section className="relative bg-[#020202] py-20 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.03),transparent_50%)] pointer-events-none" />
-
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col items-center mb-16">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-yellow-500/60 text-[10px] tracking-[1em] uppercase mb-4 pl-[1em]"
-            >
-              Choose Your Path
-            </motion.span>
-            <h2 className="text-4xl md:text-6xl font-[900] text-white tracking-tighter uppercase font-['Plus_Jakarta_Sans']">
-              HAPPENINGS
-            </h2>
+            {/* Floating label */}
             <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100px" }}
-              className="h-[2px] bg-yellow-500 mt-4 shadow-[0_0_20px_rgba(234,179,8,0.6)]"
-            />
+              animate={{ y: [0, -6, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -bottom-5 left-4 rounded-full border border-white/10 bg-[#0b0b10]/90 px-4 py-2 font-mono text-[7px] uppercase tracking-[0.25em] text-white/40 shadow-xl backdrop-blur-xl sm:left-8"
+            >
+              One day · Infinite possibilities
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* COUNTDOWN */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.9 }}
+          className="relative mt-10 overflow-hidden rounded-2xl border border-white/[0.09] bg-white/[0.025] backdrop-blur-xl"
+        >
+          {/* Ambient glow */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-violet-500/[0.08] blur-[90px]" />
+
+          <div className="flex items-center justify-between border-b border-white/[0.07] px-6 py-4 sm:px-8">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+              </span>
+
+              <span className="genora-label">The countdown begins</span>
+            </div>
+
+            <span className="hidden font-mono text-[8px] tracking-[0.25em] text-white/20 sm:block">
+              GENORA / 26
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto relative">
-            <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-12 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-
+          {/* Numbers */}
+          <div className="relative grid grid-cols-4">
             {[
-              {
-                id: "technical-events",
-                label: "Technical",
-                sub: "Logic & Code",
-                icon: <Rocket size={24} />,
-                phase: "Phase 01",
-              },
-              {
-                id: "non-technical-events",
-                label: "Non-Technical",
-                sub: "Creativity & Fun",
-                icon: <Trophy size={24} />,
-                phase: "Phase 02",
-              },
-            ].map((tab) => (
-              <Scroll
-                key={tab.id}
-                to={tab.id}
-                spy={true}
-                smooth={true}
-                offset={-80}
-                className="cursor-pointer"
+              { value: timeLeft.days, label: "Days" },
+              { value: timeLeft.hours, label: "Hours" },
+              { value: timeLeft.minutes, label: "Minutes" },
+              { value: timeLeft.seconds, label: "Seconds" },
+            ].map((item, index) => (
+              <div
+                key={item.label}
+                className={`relative flex min-h-[125px] flex-col justify-center px-3 py-6 sm:min-h-[155px] sm:px-6 lg:min-h-[175px] ${
+                  index !== 0 ? "border-l border-white/[0.07]" : ""
+                }`}
               >
                 <motion.div
-                  whileHover={{ y: -8, borderColor: "rgba(234, 179, 8, 0.4)" }}
-                  whileTap={{ scale: 0.97 }}
-                  className="relative flex flex-col p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] backdrop-blur-xl transition-all duration-500 group overflow-hidden"
+                  key={item.value}
+                  initial={{ opacity: 0.25, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="font-mono text-[2.8rem] font-medium leading-none tracking-[-0.08em] text-white sm:text-[4rem] lg:text-[4.8rem] xl:text-[5.3rem]"
                 >
-                  {/* Subtle card glow */}
-                  <div className="absolute -inset-20 bg-yellow-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                  <div className="flex items-start justify-between relative z-10 mb-8">
-                    <div className="p-3 rounded-2xl bg-white/[0.03] text-white/40 group-hover:text-yellow-500 group-hover:bg-yellow-500/10 transition-all duration-500">
-                      {tab.icon}
-                    </div>
-                    <span className="text-[10px] font-black text-white/20 uppercase tracking-widest pt-2">
-                      {tab.phase}
-                    </span>
-                  </div>
-
-                  <div className="relative z-10">
-                    <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tighter group-hover:text-yellow-500 transition-colors">
-                      {tab.label}
-                    </h4>
-                    <p className="text-[10px] text-white/30 uppercase tracking-[0.3em] mt-1 font-medium">
-                      {tab.sub}
-                    </p>
-                  </div>
-
-                  <div className="mt-8 flex items-center gap-2 text-[9px] font-bold text-yellow-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                    Jump to Section{" "}
-                    <ChevronDown size={14} className="animate-bounce" />
-                  </div>
+                  {String(item.value).padStart(2, "0")}
                 </motion.div>
-              </Scroll>
+
+                <span className="mt-4 font-mono text-[7px] font-medium uppercase tracking-[0.3em] text-white/30 sm:text-[8px]">
+                  {item.label}
+                </span>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-px bg-violet-400"
+                  initial={{ width: 0 }}
+                  animate={{ width: "35%" }}
+                  transition={{
+                    delay: 1 + index * 0.1,
+                    duration: 0.8,
+                  }}
+                />
+              </div>
             ))}
           </div>
+        </motion.div>
+
+        <div className="mt-4 flex items-center justify-between px-1">
+          <p className="genora-label">Until the gates of Genora ’26 open</p>
+
+          <motion.div
+            animate={{ x: [0, 5, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="hidden text-white/20 sm:block"
+          >
+            →
+          </motion.div>
         </div>
+
+        {/* Bottom scroll indicator */}
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-3 font-mono text-[7px] uppercase tracking-[0.3em] text-white/20 lg:flex"
+        >
+          Scroll to explore
+          <ArrowDown size={12} />
+        </motion.div>
       </section>
-
-      {/* Event details */}
-      <section className="relative bg-[#020202] pb-40 overflow-hidden md:px-8">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(234,179,8,0.05),transparent_50%)]" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          {/* TECHNICAL ARENA */}
-          <div id="technical-events" className="pt-24">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  className="text-yellow-500 text-[10px] tracking-[0.5em] uppercase font-black"
-                >
-                  Phase 01
-                </motion.span>
-                <h3 className="text-4xl md:text-6xl font-[900] text-white uppercase tracking-tighter mt-2 font-['Plus_Jakarta_Sans']">
-                  Technical{" "}
-                  <span className="metallic-text italic text-white/90">
-                    Arena
-                  </span>
-                </h3>
-              </div>
-              <div className="h-[1px] hidden md:block flex-grow mx-10 bg-gradient-to-r from-yellow-500/30 to-transparent mb-4" />
-              <p className="text-white/30 text-xs uppercase tracking-widest max-w-[200px] leading-relaxed">
-                Where code meets pure innovation.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  to: "/paper-presentation",
-                  name: "Paper Presentation",
-                  img: "/paperpresentation.png",
-                  desc: "The ultimate stage for research and innovation in Computer Science.",
-                },
-                {
-                  to: "/duo-debug",
-                  name: "Duo Debug",
-                  img: "/code-hunt.png",
-                  desc: "Solve or be solved. An intense multi-round coding marathon.",
-                },
-                {
-                  to: "/draftedge",
-                  name: "Draft Edge",
-                  img: "/webcraft.png",
-                  desc: "Designing the future of the web with high-end UI/UX logic.",
-                },
-                {
-                  to: "/prompt-paradox",
-                  name: "Prompt Paradox",
-                  img: "/sympai.png",
-                  desc: "AI Pioneers only. Face the cutting-edge neural challenge.",
-                },
-              ].map((event, i) => (
-                <motion.div
-                  key={event.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <RouterLink to={event.to}>
-                    <EventsCard
-                      name={event.name}
-                      img={event.img}
-                      details={event.desc}
-                    />
-                  </RouterLink>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* FUN ZONE (NON-TECHNICAL) */}
-          <div id="non-technical-events" className="pt-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div className="md:order-2 text-right">
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  className="text-yellow-500 text-[10px] tracking-[0.5em] uppercase font-black"
-                >
-                  Phase 02
-                </motion.span>
-                <h3 className="text-4xl md:text-6xl font-[900] text-white uppercase tracking-tighter mt-2 font-['Plus_Jakarta_Sans'] px-2">
-                  Fun{" "}
-                  <span className="metallic-text italic pr-4 inline-block text-white/90">
-                    Zone
-                  </span>
-                </h3>
-              </div>
-              <div className="h-[1px] hidden md:block flex-grow mx-10 bg-gradient-to-l from-yellow-500/30 to-transparent mb-4 md:order-1" />
-              <p className="text-white/30 text-xs uppercase tracking-widest max-w-[200px] leading-relaxed md:order-0">
-                Where creativity takes flight beyond the screen.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  to: "/cluecracker",
-                  name: "Clue Cracker",
-                  img: "/clue-clash.png",
-                  desc: "Decode the mysteries and solve riddles under extreme pressure.",
-                },
-                {
-                  to: "/fusionary",
-                  name: "Fusionary",
-                  img: "/fusionary.png",
-                  desc: "Connect the dots and spark victory in this battle of sharp minds.",
-                },
-              ].map((event, i) => (
-                <motion.div
-                  key={event.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <RouterLink to={event.to}>
-                    <EventsCard
-                      name={event.name}
-                      img={event.img}
-                      details={event.desc}
-                    />
-                  </RouterLink>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 };
 
