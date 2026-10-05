@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import InstitutionSection from "./InstitutionSection ";
+import EventsSection from "./EventsSection";
 
 const EVENT_DATE = new Date("2026-10-14T00:00:00+05:30").getTime();
 
@@ -121,6 +122,12 @@ const Home = () => {
         </motion.div>
 
         <motion.button
+          onClick={() =>
+            document.getElementById("events")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            })
+          }
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -238,7 +245,15 @@ const Home = () => {
                 </span>
               </a>
 
-              <button className="group relative inline-flex h-14 items-center justify-center gap-3 rounded-full border border-white/[0.14] bg-white/[0.025] px-7 text-sm font-semibold tracking-[0.08em] text-white/75 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-violet-400/40 hover:bg-violet-500/[0.07] hover:text-white hover:shadow-[0_15px_45px_rgba(139,92,246,0.12)] active:translate-y-0 sm:h-[58px] sm:px-8">
+              <button
+                onClick={() =>
+                  document.getElementById("events")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
+                className="group relative inline-flex h-14 items-center justify-center gap-3 rounded-full border border-white/[0.14] bg-white/[0.025] px-7 text-sm font-semibold tracking-[0.08em] text-white/75 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-violet-400/40 hover:bg-violet-500/[0.07] hover:text-white hover:shadow-[0_15px_45px_rgba(139,92,246,0.12)] active:translate-y-0 sm:h-[58px] sm:px-8"
+              >
                 <span className="pointer-events-none absolute inset-0 rounded-full opacity-0 ring-1 ring-inset ring-violet-400/20 transition-opacity duration-500 group-hover:opacity-100" />
 
                 <span className="relative z-10">Explore Events</span>
@@ -458,6 +473,9 @@ const Home = () => {
 
       {/* Institution */}
       <InstitutionSection />
+
+      {/* Events */}
+      <EventsSection />
     </main>
   );
 };

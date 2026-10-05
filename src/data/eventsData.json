@@ -2,7 +2,7 @@
   "paper-presentation": {
     "event_name": "Paper Presentation",
     "icon": "📄",
-    "image": "/paperpresentation.png",
+    "image": "/paper-presentation.png",
     "description": "Paper Presentation is a technical event where participants present innovative ideas, research work, or technical concepts related to Computer Science and related domains. Teams will present their work using presentation slides and explain their idea, methodology, and impact. The event focuses on communication skills, technical knowledge, originality, and the ability to clearly explain complex concepts.",
     "rounds": [
       {
@@ -26,324 +26,340 @@
       "domain": "Topics must be related to Computer Science or related domains",
       "slides_limit": "Maximum 15 presentation slides",
       "presentation_time": "10 minutes presentation + Q&A",
-      "originality": "Only original work is allowed. Plagiarism is strictly prohibited",
-      "format": "Presentation should be prepared using PowerPoint or similar presentation tools"
+      "originality": "Only original work is allowed. Plagiarism is strictly prohibited.",
+      "format": "Presentation should be prepared using PowerPoint or similar presentation tools."
     },
     "judging_criteria": [
       {
         "criteria": "Technical Knowledge",
-        "description": "Understanding of the topic and depth of technical explanation"
+        "description": "Understanding of the topic and depth of technical explanation."
       },
       {
         "criteria": "Innovation",
-        "description": "Creativity and originality of the idea presented"
+        "description": "Creativity and originality of the idea presented."
       },
       {
         "criteria": "Presentation Skills",
-        "description": "Clarity, confidence, and effectiveness in presenting the topic"
+        "description": "Clarity, confidence, and effectiveness in presenting the topic."
       },
       {
         "criteria": "Content Quality",
-        "description": "Organization of slides, clarity of problem statement, and explanation of solution"
+        "description": "Organization of slides, clarity of problem statement, and explanation of solution."
       },
       {
         "criteria": "Response to Questions",
-        "description": "Ability to answer questions confidently and accurately"
+        "description": "Ability to answer questions confidently and accurately."
       }
     ]
   },
 
-  "ai-verse": {
-    "event_name": "Draft Edge",
-    "icon": "🎨",
-    "image": "/webcraft.png",
-    "description": "Draft Edge is an individual design challenge that tests a participant’s ability to transform ideas into visually compelling designs. Through two creative rounds, participants demonstrate design thinking, creativity, and the ability to work within constraints while producing clean and impactful visuals.",
-    "rounds": [
-      {
-        "round_name": "Redesign Challenge",
-        "description": "Participants will be given a poorly designed visual such as a poster, banner, logo, or thumbnail. Their task is to analyze the flaws and redesign it into a visually appealing and well-structured design using Canva or similar tools.",
-        "time_allotted": "30 Minutes"
-      },
-      {
-        "round_name": "Design Under Limits",
-        "description": "Participants must create a minimal yet creative design based on a theme revealed on the spot. The design must follow specific constraints that test creativity, simplicity, and design discipline.",
-        "time_allotted": "40 Minutes"
-      }
-    ],
-    "rules_and_regulations": {
-      "participation": "Individual event",
-      "tools": "Participants must use Canva or similar design tools",
-      "submission": "Designs must be submitted within the given time",
-      "fair_play": "Any rule violation or late submission will lead to disqualification"
-    },
-    "judging_criteria": [
-      {
-        "criteria": "Creativity & Originality",
-        "description": "Innovative ideas and unique visual approach"
-      },
-      {
-        "criteria": "Task Accuracy",
-        "description": "Proper understanding and execution of the given challenge"
-      },
-      {
-        "criteria": "Visual Aesthetics",
-        "description": "Layout balance, color usage, and overall appeal"
-      },
-      {
-        "criteria": "Design Efficiency",
-        "description": "Smart and effective use of design tools and elements"
-      }
-    ]
-  },
   "code-volt": {
-    "event_name": "Duo Debug",
-    "icon": "💻",
-    "image": "/code-hunt.png",
-    "description": "Duo Debug is a two-member team-based coding and debugging challenge that tests participants’ logical thinking, problem-solving ability, and teamwork. The event focuses on identifying errors, understanding program logic, and solving coding problems under time constraints. Through multiple rounds, participants will analyze outputs, debug broken code, and demonstrate individual coding skills while working as a team.",
+    "event_name": "Code Volt",
+    "icon": "⚡",
+    "image": "/code-volt.png",
+    "description": "CODE VOLT is a two-member team-based coding and debugging challenge designed to test programming knowledge, logical thinking, code-reading ability, debugging skills, and attention to detail. Unlike conventional coding competitions, participants must understand, reconstruct, debug, and validate existing code while working together under time pressure.",
+    "participation": "Team of 2 members",
     "rounds": [
       {
-        "round_name": "Code Quiz",
-        "description": "Each team will be given a set of 30 questions divided into three difficulty levels. The questions will test programming knowledge, logical reasoning, and output prediction skills. Teams must carefully analyze the questions and select the correct answers within the allotted time.",
-        "time_allotted": "30 Minutes"
+        "round_name": "Broken Code",
+        "description": "Teams will be presented with 4 programming problems containing incomplete or broken code. Certain lines or critical portions of the logic will be deliberately removed. Participants must understand the existing program, identify the missing logic, reconstruct the required statements, and produce the correct working program.",
+        "challenge_points": [
+          "Understand the given problem and existing code",
+          "Trace the program logic",
+          "Identify missing statements or logic",
+          "Complete the code appropriately",
+          "Test the solution with given inputs",
+          "Verify the expected output"
+        ],
+        "concepts": [
+          "Arrays",
+          "Strings",
+          "Searching",
+          "Sorting",
+          "Recursion",
+          "Data Structures",
+          "Algorithms",
+          "Programming Fundamentals"
+        ]
       },
       {
-        "round_name": "Broken Code Find",
-        "description": "Participants will be provided with a broken code snippet along with the expected output. Teams must identify the errors in the program and correct them to produce the correct output. A total of five debugging problems will be given.",
-        "time_allotted": "30 Minutes"
-      },
-      {
-        "round_name": "Blind Code Challenge",
-        "description": "Two programming problems will be given. For a fixed time interval, team members will be separated and required to solve the problems individually. Communication between team members is strictly not allowed during this round, testing each participant’s independent coding ability.",
-        "time_allotted": "40 Minutes"
+        "round_name": "Code Shock",
+        "description": "The second round consists of 3 debugging challenges: 2 Jumbled Code challenges and 1 Invalid Test Case challenge. Teams must inspect the given programs, identify hidden problems, restore the correct execution flow, and validate the solution.",
+        "challenges": [
+          {
+            "challenge_name": "Jumbled Code 1",
+            "description": "Selected lines of a program are deliberately rearranged. Participants must understand the purpose and dependencies of each statement and restore the correct order of execution."
+          },
+          {
+            "challenge_name": "Jumbled Code 2",
+            "description": "A second program contains incorrectly ordered statements. Teams must analyze variables, conditions, loops, functions, and dependencies to reconstruct the correct program flow."
+          },
+          {
+            "challenge_name": "Invalid Test Case",
+            "description": "Participants are given a program and a collection of test cases. They must identify the test case that exposes a flaw, edge case, boundary condition, or incorrect assumption in the implementation."
+          }
+        ]
       }
     ],
+    "skills_tested": [
+      "Logical Thinking",
+      "Programming Fundamentals",
+      "Code Analysis",
+      "Debugging Skills",
+      "Problem Solving",
+      "Program Flow Understanding",
+      "Attention to Detail",
+      "Time Management",
+      "Team Collaboration",
+      "Algorithmic Thinking"
+    ],
     "rules_and_regulations": {
-      "participation": "Team event with exactly two members per team",
-      "languages": "Participants can use C, C++, Java, or Python",
-      "communication": "Discussion between team members is not allowed during the Blind Code round",
-      "fair_play": "Any malpractice or violation of rules will lead to immediate disqualification"
+      "team_size": "Exactly 2 participants per team",
+      "team_participation": "Both participants are expected to actively participate",
+      "evaluation": "Teams will be evaluated based on accuracy, completion time, and overall performance",
+      "fair_play": "Any form of cheating, malpractice, or violation of event rules may result in disqualification"
     },
-    "judging_criteria": [
-      {
-        "criteria": "Accuracy",
-        "description": "Correctness of answers and solutions provided by the team"
-      },
-      {
-        "criteria": "Debugging Ability",
-        "description": "Ability to identify and fix errors in the given code efficiently"
-      },
-      {
-        "criteria": "Problem Solving",
-        "description": "Logical thinking and approach used to solve coding challenges"
-      },
-      {
-        "criteria": "Time Efficiency",
-        "description": "Completing the tasks correctly within the given time limit"
-      }
-    ]
+    "tagline": "Think. Debug. Fix. Execute."
   },
 
   "prompt-paradox": {
     "event_name": "Prompt Paradox",
-    "icon": "🤖",
-    "image": "/sympai.png",
-    "description": "Prompt Paradox is a cutting-edge AI challenge where participants use generative tools to solve mysteries, recreate visuals, and engage in high-stakes prompt engineering battles.",
+    "icon": "🧠",
+    "image": "/prompt-paradox.png",
+    "description": "Prompt Paradox is a competitive technical challenge that tests problem-solving, logical thinking, AI literacy, technical reasoning, and decision-making under time pressure.",
+    "participation": "Individual or team participation",
+    "team_size": "Maximum 2 members per team",
+    "event_duration": "Approximately 1 hour 30 minutes to 1 hour 45 minutes",
     "rounds": [
       {
-        "round_name": "Taboo Image",
-        "description": "Participants must recreate a shown image using AI without using obvious or restricted keywords. Top 30% teams qualify.",
-        "time_allotted": "10 Minutes"
+        "round_name": "Prompt Lock",
+        "description": "Participants navigate a nonlinear sequence of technical challenges using logic, technical knowledge, and permitted AI assistance. The highest-performing participants or teams will qualify for Round 2."
       },
       {
-        "round_name": "AI Treasure Hunt",
-        "description": "Scan QR codes to unlock clues. Use AI tools to solve logic puzzles and progress. First 8 teams move to the final.",
-        "time_allotted": "30 Minutes"
+        "round_name": "Technical War Room",
+        "description": "Qualified participants or teams investigate a technical scenario, analyze evidence, use AI intelligently, verify information, and make a justified technical decision. Three equivalent case scenarios will be used for the qualified participants or teams."
       },
       {
-        "round_name": "Attack & Defense",
-        "description": "A two-phase battle. Defend your password with AI protection, then attempt to extract your opponent's password in limited attempts.",
-        "time_allotted": "40 Minutes"
+        "round_name": "Surprise Round",
+        "description": "A short Special or Surprise Round may be conducted if required to determine the final rankings. The details will be announced on the spot only if the round is conducted based on the event-day situation."
+      }
+    ],
+    "final_ranking": "The final ranking will be based on combined performance across the applicable rounds, with round scores converted to an equivalent scale before the final calculation.",
+    "winners": "The Top 3 participants or teams will be declared the winners.",
+    "rules_and_regulations": {
+      "rule_book": "Participants must read the Prompt Paradox Participant Rule Book carefully before registering.",
+      "registration": "Registration indicates that the participant or team has read and agrees to follow the event rules and conditions."
+    },
+    "tagline": "Think. Prompt. Verify. Decide."
+  },
+
+  "ai-verse": {
+    "event_name": "AI Verse",
+    "icon": "🤖",
+    "image": "/ai-verse.png",
+    "description": "AI VERSE is a two-round technical challenge designed for teams of two, combining Generative AI knowledge with practical application development. The event begins with a GenAI Quiz that tests participants on Generative AI concepts, AI tools, application development, programming fundamentals, and emerging AI technologies. Qualified teams will advance to the AI App Forge round, where they will receive a real-world problem statement and use Generative AI to design and develop a functional application within the given time.",
+    "participation": "Team of 2 members",
+    "rounds": [
+      {
+        "round_name": "GenAI Quiz",
+        "description": "Teams will participate in a technical quiz covering Generative AI concepts, Large Language Models, AI tools, prompt-based applications, AI-assisted development, programming fundamentals, and emerging AI technologies.",
+        "time_allotted": "20 Minutes"
+      },
+      {
+        "round_name": "AI App Forge",
+        "description": "Qualified teams will receive a real-world problem statement and must design and develop a functional application using Generative AI and AI-assisted development tools. Teams must understand the problem, plan their solution, leverage AI effectively, implement the required features, and submit a working application within the allotted time.",
+        "time_allotted": "60 Minutes"
       }
     ],
     "rules_and_regulations": {
-      "team_size": "Exactly 2 members per team",
-      "devices": "Computers provided, but personal devices are allowed",
-      "knowledge": "Basic AI knowledge is sufficient",
-      "timing": "Strict adherence to round limits is mandatory",
-      "judging": "Judges' decisions are final and binding"
+      "participation": "Team of 2 members",
+      "tools": "Participants may use Generative AI and AI-assisted development tools available through free tiers or free-access plans.",
+      "suggested_tools": [
+        "ChatGPT",
+        "Gemini",
+        "Claude",
+        "Google AI Studio",
+        "Microsoft Copilot",
+        "Lovable",
+        "Bolt.new",
+        "v0",
+        "Replit"
+      ],
+      "ai_usage": "Only models, tools, APIs, credits, and features accessible through free tiers or free-access plans may be used. Subscription-only models, premium models, paid APIs, purchased credits, and paid-exclusive features are not permitted.",
+      "development_tools": "Participants may use commonly available programming languages, frameworks, libraries, IDEs, and development tools required to build their application, subject to event guidelines.",
+      "submission": "The application must be completed and submitted within the allotted time. Late submissions may not be considered.",
+      "problem_statement": "The problem statement will be provided by the organizers at the beginning of the AI App Forge round.",
+      "internet_access": "Participants may use internet-accessible resources and permitted AI tools during the development round, subject to the rules announced by the organizers.",
+      "originality": "The submitted application must be developed by the participating team during the event. Pre-built solutions or previously developed projects may not be submitted.",
+      "fair_play": "Any misconduct, plagiarism, use of prohibited paid AI services, or violation of event rules may lead to disqualification."
     },
     "judging_criteria": [
       {
-        "criteria": "Prompt Engineering",
-        "description": "Effectiveness and efficiency of AI prompts used"
+        "criteria": "Technical Implementation",
+        "description": "Quality, functionality, reliability, and technical execution of the developed application."
       },
       {
-        "criteria": "Visual Accuracy",
-        "description": "Closeness of AI output to the original target image"
+        "criteria": "Effective Use of GenAI",
+        "description": "Meaningful, efficient, and appropriate use of Generative AI tools during development."
       },
       {
-        "criteria": "Strategic Logic",
-        "description": "Effectiveness of defense systems and attack patterns"
+        "criteria": "Problem Solving",
+        "description": "Understanding of the problem statement and effectiveness, relevance, and practicality of the proposed solution."
       },
       {
-        "criteria": "Speed",
-        "description": "Completion time for clue-based challenges"
+        "criteria": "Creativity & Innovation",
+        "description": "Originality, innovative thinking, uniqueness, and creative approach demonstrated in the solution."
+      },
+      {
+        "criteria": "UI/UX & Presentation",
+        "description": "Usability, interface quality, user experience, visual design, and clarity of the final application."
       }
     ]
   },
 
-  "reels-and-rhythm": {
-    "event_name": "Fusionary",
-    "icon": "🎬🎵",
-    "image": "/fusionary.png",
-    "description": "Fusionary is a fun non-technical guessing event where participants decode visual clues, music hints, and mixed image puzzles to identify songs or movies. Teams must observe carefully, connect the clues creatively, and guess the correct answer. The event tests creativity, quick thinking, and entertainment knowledge while encouraging teamwork and discussion.",
+  "reel-and-rhythm": {
+    "event_name": "Reel & Rhythm",
+    "icon": "🎬",
+    "image": "/reel-and-rhythm.png",
+    "description": "Reel & Rhythm is a two-round entertainment challenge that puts participants’ cinema knowledge, musical memory, recognition skills, and response speed to the test. From identifying movies, songs, dialogues, and iconic scenes in REEL RUSH to recognizing songs through beats, instrumentals, humming, and unexpected audio clues in BEAT BREAKER, every challenge demands quick thinking and sharp recognition.",
+    "participation": "Solo or team participation",
+    "team_size": "1–4 participants",
     "rounds": [
       {
-        "round_name": "Musical Fusionary",
-        "description": "Participants are given visual clues that represent lyrics or elements from a song. By interpreting the images and connecting them together, teams must identify the correct song.",
-        "time_allotted": "15 Minutes"
+        "round_name": "Reel Rush",
+        "description": "A fast-paced movie and song identification challenge. Participants will be presented with rapid-fire clues and must identify the correct movie, song, character, actor, scene, or other specified answer within the given time.",
+        "clue_types": [
+          "Movie scenes",
+          "Posters and images",
+          "Iconic dialogues",
+          "Character or actor clues",
+          "Song clips",
+          "Short audio clips",
+          "Creative cinematic clues"
+        ]
       },
       {
-        "round_name": "Movie Fusionary",
-        "description": "Teams are shown a combination of images that hint at a particular movie. Participants must decode the meaning behind the images and guess the correct movie title.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Jumbled Image Fusion",
-        "description": "A set of multiple images will be shown, but only 3 or 4 of them are relevant clues. Teams must identify the correct images, combine their meanings, and determine the corresponding movie or song.",
-        "time_allotted": "15 Minutes"
+        "round_name": "Beat Breaker",
+        "description": "A music-based identification challenge where familiar songs are presented through unconventional musical clues.",
+        "clue_types": [
+          {
+            "type": "Beat / Rhythm",
+            "description": "Identify the song from its beat or rhythmic pattern."
+          },
+          {
+            "type": "Instrumental",
+            "description": "Identify the song from a vocal-free instrumental section."
+          },
+          {
+            "type": "Humming",
+            "description": "Identify the song from its melody being hummed."
+          },
+          {
+            "type": "Unexpected Audio",
+            "description": "Identify the original song from creatively altered audio such as reversed, slowed, shortened, or modified clips."
+          }
+        ]
       }
     ],
-    "rules_and_regulations": {
-      "participation": "Team-based event",
-      "discussion": "Teams can discuss among themselves before submitting the final answer",
-      "answer_submission": "Each team can submit only one final answer per question",
-      "clue_format": "Clues may be given in the form of images, symbols, or visual hints",
-      "scoring": "Points are awarded based on correct answers and speed of response"
+    "buzzer_system": {
+      "description": "A buzzer-based answering system will determine which team gets the first opportunity to answer.",
+      "rules": [
+        "Each team may use one smartphone to access the digital buzzer.",
+        "The team that activates the buzzer first will be given the opportunity to answer.",
+        "In case of network or technical failure, an assigned physical flag system will be used.",
+        "Teams must raise their flag clearly to indicate that they wish to answer.",
+        "If multiple teams buzz or raise their flags simultaneously, the organizers will determine the response order.",
+        "Only the team recognized by the organizers may provide the answer.",
+        "The organizers’ decision regarding buzzer order will be final."
+      ]
     },
-    "judging_criteria": [
-      {
-        "criteria": "Accuracy",
-        "description": "Correctly identifying the movie or song from the given clues"
-      },
-      {
-        "criteria": "Speed",
-        "description": "Teams that answer correctly in less time receive higher points"
-      },
-      {
-        "criteria": "Creative Interpretation",
-        "description": "Ability to interpret visual clues and connect them meaningfully"
-      },
-      {
-        "criteria": "Team Collaboration",
-        "description": "Effective teamwork and discussion while solving clues"
-      }
+    "scoring": ["Accuracy", "Speed", "Recognition", "Overall Performance"],
+    "qualification": "Based on Round 1 scores, the organizers will determine which participants or teams advance to Beat Breaker.",
+    "tie_breaker": "If two or more teams finish with the same score, an additional tie-breaker challenge may be conducted.",
+    "rules_and_regulations": [
+      "Each participant may register for only one team.",
+      "Team members must be finalized before the event begins.",
+      "Answers must be given within the specified time limit.",
+      "Answers submitted after the time limit may not be accepted.",
+      "Participants may discuss answers only within their registered team.",
+      "Mobile phones may be used only for the designated buzzer system during active gameplay.",
+      "Internet searches, external assistance, smartwatches, earphones, or other unauthorized resources are not permitted during the challenges.",
+      "Participants must not record or distribute questions, clues, or audio used during the event.",
+      "Any form of cheating, unauthorized assistance, or deliberate disruption may result in disqualification.",
+      "Participants must follow the instructions of the event coordinators throughout the competition.",
+      "The organizers may modify the number of questions, time limits, or round structure if required for the smooth conduct of the event.",
+      "The organizers’ decision regarding answers, buzzer order, scoring, qualification, tie-breakers, and rule interpretation will be final."
     ]
   },
 
   "wit-and-will": {
-    "event_name": "Clue Cracker",
+    "event_name": "Wit & Will",
     "icon": "🧩",
-    "image": "/clue-clash.png",
-    "description": "Clue Cracker is a team-based puzzle and guessing event where participants work together to decode clues and identify the correct answer. Teams discuss the hints and submit one final answer per question. Faster correct answers earn higher points, making teamwork, quick thinking, and logical reasoning essential.",
+    "image": "/wit-and-will.png",
+    "description": "WIT & WILL is a thrilling two-round team challenge that combines puzzles, observation, strategy, negotiation, teamwork, and quick decision-making. Teams compete through a series of unexpected challenges designed to test both their intelligence and determination.",
+    "participation": "Team event",
+    "team_size": "4 participants",
     "rounds": [
       {
-        "round_name": "Warm Up",
-        "description": "Teams solve simple and common clues to get familiar with the game format and build confidence.",
-        "time_allotted": "15 Minutes"
+        "round_name": "WIT",
+        "description": "Teams solve a series of riddles, puzzles, decoding challenges, observation tasks, hidden connections, and time-based challenges. Each correct solution earns points.",
+        "challenges": [
+          {
+            "challenge_name": "Decode It",
+            "description": "A coded message is given using numbers or symbols. Teams must decode it within 2 minutes.",
+            "example": "3-1-20 → CAT"
+          },
+          {
+            "challenge_name": "Spot the Difference",
+            "description": "Two similar images are shown for 30 seconds. Teams must identify as many differences as possible."
+          },
+          {
+            "challenge_name": "Missing Link",
+            "description": "Teams are given 3–4 clues and must find the common connection.",
+            "example": "Apple → Newton → Gravity → ?",
+            "answer": "Physics"
+          },
+          {
+            "challenge_name": "Pattern Breaker",
+            "description": "Teams must identify the missing number or letter in a sequence.",
+            "example": "2, 6, 12, 20, 30, ?",
+            "answer": "42"
+          },
+          {
+            "challenge_name": "Riddle Rush",
+            "description": "Teams solve tricky riddles within a limited time.",
+            "example": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind.",
+            "answer": "Echo"
+          },
+          {
+            "challenge_name": "Picture Puzzle",
+            "description": "A combination of emojis or images represents a word, movie, phrase, or concept. Teams must identify the answer."
+          }
+        ]
       },
       {
-        "round_name": "Famous Picks",
-        "description": "Questions are based on famous personalities, movies, and general knowledge where teams must decode clues to find the correct answer.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Twist Round",
-        "description": "A special round where clues may be given through unique formats such as audio clips, visuals, or creative hint patterns.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Logic & Rapid Final",
-        "description": "The final round includes tricky logic-based clues with fewer hints, requiring teams to think quickly and answer fast.",
-        "time_allotted": "15 Minutes"
+        "round_name": "WILL",
+        "description": "Teams take part in interactive physical and strategic challenges that test negotiation, coordination, decision-making, risk-taking, teamwork, adaptability, and determination."
       }
     ],
-    "rules_and_regulations": {
-      "participation": "Team-based event",
-      "discussion": "Teams can discuss among themselves before giving the final answer",
-      "answer_submission": "Each team can submit only one final answer per question",
-      "scoring": "Points are awarded based on accuracy and speed of answering"
-    },
-    "judging_criteria": [
-      {
-        "criteria": "Accuracy",
-        "description": "Correctly identifying the answer from the clues"
-      },
-      {
-        "criteria": "Speed",
-        "description": "Faster correct answers earn higher points"
-      },
-      {
-        "criteria": "Logical Thinking",
-        "description": "Ability to analyze and connect clues effectively"
-      },
-      {
-        "criteria": "Team Collaboration",
-        "description": "Effective teamwork in discussing and solving clues"
-      }
-    ]
+    "evaluation": [
+      "Accuracy",
+      "Strategy",
+      "Teamwork",
+      "Creativity",
+      "Execution"
+    ],
+    "winner": "The team with the highest combined score from both rounds wins."
   },
 
   "player-auction": {
-    "event_name": "Clue Cracker",
-    "icon": "🧩",
-    "image": "/clue-clash.png",
-    "description": "Clue Cracker is a team-based puzzle and guessing event where participants work together to decode clues and identify the correct answer. Teams discuss the hints and submit one final answer per question. Faster correct answers earn higher points, making teamwork, quick thinking, and logical reasoning essential.",
-    "rounds": [
-      {
-        "round_name": "Warm Up",
-        "description": "Teams solve simple and common clues to get familiar with the game format and build confidence.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Famous Picks",
-        "description": "Questions are based on famous personalities, movies, and general knowledge where teams must decode clues to find the correct answer.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Twist Round",
-        "description": "A special round where clues may be given through unique formats such as audio clips, visuals, or creative hint patterns.",
-        "time_allotted": "15 Minutes"
-      },
-      {
-        "round_name": "Logic & Rapid Final",
-        "description": "The final round includes tricky logic-based clues with fewer hints, requiring teams to think quickly and answer fast.",
-        "time_allotted": "15 Minutes"
-      }
-    ],
-    "rules_and_regulations": {
-      "participation": "Team-based event",
-      "discussion": "Teams can discuss among themselves before giving the final answer",
-      "answer_submission": "Each team can submit only one final answer per question",
-      "scoring": "Points are awarded based on accuracy and speed of answering"
-    },
-    "judging_criteria": [
-      {
-        "criteria": "Accuracy",
-        "description": "Correctly identifying the answer from the clues"
-      },
-      {
-        "criteria": "Speed",
-        "description": "Faster correct answers earn higher points"
-      },
-      {
-        "criteria": "Logical Thinking",
-        "description": "Ability to analyze and connect clues effectively"
-      },
-      {
-        "criteria": "Team Collaboration",
-        "description": "Effective teamwork in discussing and solving clues"
-      }
-    ]
+    "event_name": "Player Auction",
+    "icon": "🏆",
+    "image": "/player-auction.png",
+    "description": "Details for the Player Auction event will be announced soon.",
+    "status": "Coming Soon",
+    "rounds": [],
+    "rules_and_regulations": {},
+    "judging_criteria": []
   }
 }

@@ -3,7 +3,7 @@ import { Building2, MapPin, CalendarDays } from "lucide-react";
 
 const InstitutionSection = () => {
   return (
-    <section className="relative overflow-hidden px-5 text-white sm:px-8 md:px-12 lg:px-16">
+    <section className="relative overflow-hidden px-5 text-white sm:px-8 md:px-12 lg:px-16 py-5">
       {/* AMBIENT BACKGROUND */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-[12%] top-0 h-px w-[28%] bg-gradient-to-l from-violet-500/15 to-transparent" />

@@ -8,7 +8,7 @@ import CodeVolt from "./Pages/Technical/CodeVolt.jsx";
 import AiVerse from "./Pages/Technical/AiVerse.jsx";
 import PromptParadox from "./Pages/Technical/PromptParadox.jsx";
 import WitAndWill from "./Pages/Non-Technical/WitAndWill.jsx";
-import ReelsAndRhythm from "./Pages/Non-Technical/ReelsAndRhythm.jsx";
+import ReelAndRhythm from "./Pages/Non-Technical/ReelAndRhythm.jsx";
 import PlayerAuction from "./Pages/Non-Technical/PlayerAuction.jsx";
 
 const route = createBrowserRouter([
@@ -44,8 +44,8 @@ const route = createBrowserRouter([
         element: <WitAndWill />,
       },
       {
-        path: "/reels-and-rhythm",
-        element: <ReelsAndRhythm />,
+        path: "/reel-and-rhythm",
+        element: <ReelAndRhythm />,
       },
       {
         path: "/player-auction",
