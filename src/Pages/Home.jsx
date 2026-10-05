@@ -8,6 +8,7 @@ import {
   MoveRight,
   Sparkles,
 } from "lucide-react";
+import InstitutionSection from "./InstitutionSection ";
 
 const EVENT_DATE = new Date("2026-10-14T00:00:00+05:30").getTime();
 
@@ -109,7 +110,7 @@ const Home = () => {
           </div>
 
           <div className="hidden sm:block">
-            <p className="font-mono text-[8px] tracking-[0.35em] text-white/35">
+            <p className="font-mono text-[9px] tracking-[0.3em] text-white/35">
               GCE TIRUNELVELI
             </p>
 
@@ -180,7 +181,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-8 flex items-end gap-5 sm:mt-10"
+              className="mt-6 flex items-end gap-5"
             >
               <span className="font-['Syncopate'] text-5xl font-bold leading-none tracking-[-0.08em] text-violet-300 sm:text-7xl">
                 ’26
@@ -189,11 +190,11 @@ const Home = () => {
               <div className="mb-1 h-10 w-px bg-white/10" />
 
               <div className="mb-1">
-                <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
                   One day
                 </p>
 
-                <p className="mt-1 text-xs font-medium text-white/60 sm:text-sm">
+                <p className="mt-0.5 text-xs font-medium text-white/60 sm:text-sm">
                   Infinite possibilities.
                 </p>
               </div>
@@ -214,9 +215,14 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.8 }}
-              className="mt-9 flex flex-col gap-3 sm:flex-row"
+              className="mt-9 flex flex-col gap-4 sm:flex-row"
             >
-              <button className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-full bg-violet-500 px-7 text-sm font-semibold tracking-[0.08em] text-white shadow-[0_10px_40px_rgba(139,92,246,0.22)] transition-all duration-500 hover:-translate-y-1 hover:bg-violet-400 hover:shadow-[0_18px_55px_rgba(139,92,246,0.38)] active:translate-y-0 sm:h-[58px] sm:px-8">
+              <a
+                href="https://forms.gle/n1bCvPxmY8U5Dh318"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-full bg-violet-500 px-7 text-sm font-semibold tracking-[0.08em] text-white shadow-[0_10px_40px_rgba(139,92,246,0.22)] transition-all duration-500 hover:-translate-y-1 hover:bg-violet-400 hover:shadow-[0_18px_55px_rgba(139,92,246,0.38)] active:translate-y-0 sm:h-[58px] sm:px-8"
+              >
                 <span className="absolute inset-y-0 -left-full w-1/2 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/25 to-transparent transition-all duration-700 group-hover:left-[130%]" />
 
                 <span className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
@@ -230,7 +236,7 @@ const Home = () => {
                     className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   />
                 </span>
-              </button>
+              </a>
 
               <button className="group relative inline-flex h-14 items-center justify-center gap-3 rounded-full border border-white/[0.14] bg-white/[0.025] px-7 text-sm font-semibold tracking-[0.08em] text-white/75 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-violet-400/40 hover:bg-violet-500/[0.07] hover:text-white hover:shadow-[0_15px_45px_rgba(139,92,246,0.12)] active:translate-y-0 sm:h-[58px] sm:px-8">
                 <span className="pointer-events-none absolute inset-0 rounded-full opacity-0 ring-1 ring-inset ring-violet-400/20 transition-opacity duration-500 group-hover:opacity-100" />
@@ -325,7 +331,7 @@ const Home = () => {
               {/* Date */}
               <div className="relative grid grid-cols-[1fr_auto] items-end gap-5 border-t border-white/[0.07] pt-5">
                 <div>
-                  <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
                     The day
                   </p>
 
@@ -335,11 +341,11 @@ const Home = () => {
                     </span>
 
                     <div className="mb-1">
-                      <p className="font-mono text-[9px] font-bold tracking-[0.2em] text-violet-300">
+                      <p className="font-mono text-lg font-bold tracking-[0.1em] text-violet-300">
                         OCT
                       </p>
 
-                      <p className="mt-1 font-mono text-[7px] tracking-[0.2em] text-white/25">
+                      <p className="font-mono text-[13px] tracking-[0.1em] text-white/40">
                         2026
                       </p>
                     </div>
@@ -383,7 +389,7 @@ const Home = () => {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
               </span>
 
-              <span className="genora-label">The countdown begins</span>
+              <span className="">The countdown begins</span>
             </div>
 
             <span className="hidden font-mono text-[8px] tracking-[0.25em] text-white/20 sm:block">
@@ -420,7 +426,7 @@ const Home = () => {
         </motion.div>
 
         <div className="mt-4 flex items-center justify-between px-1">
-          <p className="genora-label">Until the gates of Genora ’26 open</p>
+          <p className="">Until the gates of Genora ’26 open</p>
 
           <motion.div
             animate={{ x: [0, 5, 0] }}
@@ -450,7 +456,8 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/*  */}
+      {/* Institution */}
+      <InstitutionSection />
     </main>
   );
 };
