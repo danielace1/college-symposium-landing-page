@@ -24,7 +24,7 @@ const EventsSection = () => {
   return (
     <section
       id="events"
-      className="relative overflow-hidden px-5 py-20 text-white sm:px-8 md:px-12 lg:px-16 lg:py-14"
+      className="relative overflow-hidden px-5 py-14 text-white sm:px-8 md:px-12 lg:px-16"
     >
       {/* BACKGROUND */}
       <div className="pointer-events-none absolute inset-0">
@@ -98,9 +98,7 @@ const EventsSection = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            DIVIDER
-        ===================================================== */}
+        {/* DIVIDER */}
         <div className="my-10">
           <div className="flex items-center gap-5">
             <div className="h-px flex-1 bg-white/[0.06]" />
@@ -111,9 +109,7 @@ const EventsSection = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            NON TECHNICAL
-        ===================================================== */}
+        {/* NON TECHNICAL */}
         <div>
           <SectionHeader
             icon={<Sparkles size={14} strokeWidth={1.5} />}
@@ -132,9 +128,6 @@ const EventsSection = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            FOOTER STATEMENT
-        ===================================================== */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -157,10 +150,7 @@ const EventsSection = () => {
   );
 };
 
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
+// Section Header Component
 const SectionHeader = ({ icon, label, description }) => {
   return (
     <motion.div

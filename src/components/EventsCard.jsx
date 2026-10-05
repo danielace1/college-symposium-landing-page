@@ -131,7 +131,7 @@ const EventsCard = ({ event_name, image, type, number, path }) => {
                   className={`h-1.5 w-1.5 rounded-full ${accent.dot} opacity-70 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100`}
                 />
 
-                <span className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/25">
+                <span className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/40">
                   GENORA&apos;26
                 </span>
               </div>
@@ -158,7 +158,7 @@ const EventsCard = ({ event_name, image, type, number, path }) => {
               />
 
               <span
-                className={`font-mono text-[8px] uppercase tracking-[0.24em] text-white/20 transition-colors duration-300 group-hover:${accent.text}`}
+                className={`font-mono text-[8px] uppercase tracking-[0.24em] text-white/40 transition-colors duration-300 group-hover:${accent.text}`}
               >
                 Explore
               </span>

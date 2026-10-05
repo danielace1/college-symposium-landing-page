@@ -1,146 +1,296 @@
-import { Mail, Instagram, Linkedin, Phone, MapPin, Globe } from "lucide-react";
+import {
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowUpRight,
+  Globe,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+
+const contacts = [
+  {
+    role: "Student Coordinator",
+    phone: "+91 94894 81520",
+  },
+  {
+    role: "Association Head",
+    phone: "+91 80122 60400",
+  },
+];
+
+const socials = [
+  {
+    label: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/genora_offl/",
+  },
+  {
+    label: "LinkedIn",
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/gcetirunelveli",
+  },
+  {
+    label: "Email",
+    icon: Mail,
+    href: "mailto:genora.cseofficial@gmail.com",
+  },
+];
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#050505] pt-10 md:pt-16 pb-10 overflow-hidden border-t border-white/5">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-[radial-gradient(circle_at_50%_100%,rgba(234,179,8,0.05),transparent_70%)] pointer-events-none" />
+    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#050507] text-white">
+      {/* AMBIENT BACKGROUND */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -bottom-40 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-violet-600/[0.035] blur-[140px]" />
 
-      <div className="container mx-auto px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
-          <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
-            <div className="-ml-4 flex items-center justify-center lg:justify-start">
-              <img
-                src="/sparzo26-logo.png"
-                alt="Sparzo"
-                className="w-12 h-12 object-contain"
-              />
-              <h2 className="text-3xl font-[900] tracking-tighter text-white">
-                SPARZO<span className="text-yellow-500">’26</span>
-              </h2>
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/[0.15] to-transparent" />
+
+        <div
+          className="absolute inset-0 opacity-[0.018]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-5 py-10 md:py-14 sm:px-8 md:px-12 lg:px-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="flex flex-col gap-5 border-b border-white/[0.06] pb-10 md:flex-row md:items-end md:justify-between"
+        >
+          <div className="max-w-2xl">
+            <div className="mb-3 flex items-center gap-3">
+              <span className="h-px w-8 bg-violet-400/70" />
+
+              <span className="font-mono text-[10px] uppercase tracking-[0.34em] text-violet-300/60">
+                Association of CSE
+              </span>
             </div>
-            <p className="text-white/40 text-sm leading-relaxed max-w-md mx-auto lg:mx-0">
-              The flagship National Level Technical Symposium organized by the
-              Association of Computer Science & Engineering, Government College
-              of Engineering, Tirunelveli.
+
+            {/* title */}
+            <h2 className="text-[3.2rem] font-semibold leading-none tracking-[-0.07em] sm:text-6xl md:text-7xl">
+              GENORA
+              <span className="text-violet-400/80">&apos;26</span>
+            </h2>
+
+            <p className="mt-3 max-w-lg text-[15px] leading-6 text-white/35 sm:text-sm">
+              Where ideas take shape, skills are tested, and new possibilities
+              begin.
             </p>
-            <div className="pt-2 md:pt-4 flex justify-center lg:justify-start gap-6">
-              {[
-                {
-                  icon: <Mail size={20} />,
-                  href: "mailto:sparzo.cseofficial@gmail.com",
-                },
-                {
-                  icon: <Instagram size={20} />,
-                  href: "https://www.instagram.com/sparzo_offl/",
-                },
-                {
-                  icon: <Linkedin size={20} />,
-                  href: "https://www.linkedin.com/in/gcetirunelveli",
-                },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/40 hover:text-yellow-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 transition-all duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
-          <div className="lg:col-span-4 space-y-5 md:space-y-8">
-            <h4 className="text-xs font-black text-yellow-500/60 uppercase tracking-[0.4em] text-center lg:text-left">
-              Direct Line
-            </h4>
-            <div className="grid grid-cols-1 gap-4">
-              {[
-                {
-                  label: "Student Coordinator",
-                  name: "Allwin",
-                  phone: "+91 9342435661",
-                },
-                {
-                  label: "Association Head",
-                  name: "Sharmila",
-                  phone: "+91 8015527422",
-                },
-              ].map((contact, i) => (
-                <a
-                  key={i}
-                  href={`tel:${contact.phone}`}
-                  className="group flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-yellow-500/20 transition-all"
-                >
-                  <div className="p-2 rounded-lg bg-yellow-500/10 text-yellow-500 group-hover:scale-110 transition-transform">
-                    <Phone size={18} />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[10px] text-white/30 uppercase tracking-widest">
-                      {contact.label}
-                    </p>
-                    <p className="text-sm font-bold text-white group-hover:text-yellow-500 transition-colors">
-                      {contact.phone}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-4 space-y-4 md:space-y-6 text-left">
-            <h4 className="text-xs text-center md:text-left font-black text-yellow-500/60 uppercase tracking-[0.4em]">
-              Campus
-            </h4>
-            <div className="space-y-4">
-              <a
-                href="https://maps.app.goo.gl/a9wpVN5MEG37b7q58"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start justify-start gap-3 group cursor-pointer"
-              >
-                <MapPin
-                  size={18}
-                  className="text-yellow-500 shrink-0 mt-1.5 transition-transform duration-300 group-hover:scale-125"
-                />
-                <p className="text-sm text-white/50 leading-loose transition-colors duration-300 group-hover:text-white">
-                  <span className="font-bold text-white/70 group-hover:text-yellow-500 transition-colors">
-                    Government College of Engineering,
-                  </span>
-                  <br />
-                  Palayamkottai, Tirunelveli - 627007,
-                  <br />
-                  Tamil Nadu, India.
-                </p>
-              </a>
-
-              <a
-                href="https://gcetly.ac.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 text-[10px] font-bold text-yellow-500/80 hover:text-yellow-500 transition-colors uppercase tracking-widest"
-              >
-                <Globe size={14} /> Official Website
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
-            &copy; 2026 Association of Computer Science & Engineering.
-          </p>
+          {/* Socials */}
           <div className="flex items-center gap-2">
-            <div className="h-1 w-1 rounded-full bg-yellow-500 animate-pulse" />
-            <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-              GCE Tirunelveli Association
+            {socials.map(({ label, icon: Icon, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.05] text-white/35 transition-all duration-300 hover:border-violet-400/30 hover:bg-violet-400/[0.07] hover:text-violet-200"
+              >
+                <Icon
+                  size={18}
+                  strokeWidth={1.5}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+              </a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* INFORMATION GRID */}
+        <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-14">
+          {/* CONTACT */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5"
+          >
+            <FooterLabel>Direct Line</FooterLabel>
+
+            <div className="mt-5 space-y-2">
+              {contacts.map((contact) => (
+                <a
+                  key={contact.role}
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-4 transition-all duration-300 hover:border-violet-400/20 hover:bg-violet-400/[0.035]"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.025] text-white/30 transition-colors duration-300 group-hover:border-violet-400/20 group-hover:text-violet-300">
+                      <Phone size={15} strokeWidth={1.5} />
+                    </div>
+
+                    <div>
+                      <p className="font-mono text-[7px] uppercase tracking-[0.24em] text-white/25">
+                        {contact.role}
+                      </p>
+
+                      <p className="mt-1 text-[13px] font-medium text-white/70 transition-colors duration-300 group-hover:text-white">
+                        {contact.phone}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight
+                    size={15}
+                    strokeWidth={1.4}
+                    className="text-white/15 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300/70"
+                  />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CAMPUS */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.5,
+              delay: 0.08,
+            }}
+            className="lg:col-span-4"
+          >
+            <FooterLabel>Campus</FooterLabel>
+
+            <a
+              href="https://maps.app.goo.gl/a9wpVN5MEG37b7q58"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 block rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-violet-400/20 hover:bg-violet-400/[0.035]"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.025] text-white/30 transition-colors duration-300 group-hover:border-violet-400/20 group-hover:text-violet-300">
+                  <MapPin size={15} strokeWidth={1.5} />
+                </div>
+
+                <div>
+                  <p className="text-[13px] font-medium leading-5 text-white/70 transition-colors duration-300 group-hover:text-white">
+                    Government College of Engineering
+                  </p>
+
+                  <p className="mt-1 text-[12px] leading-5 text-white/30">
+                    Tirunelveli - 627007
+                    <br />
+                    Tamil Nadu, India
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex items-center gap-2 border-t border-white/[0.06] pt-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 transition-colors group-hover:text-violet-300/60">
+                  Open in Maps
+                </span>
+
+                <ArrowUpRight
+                  size={12}
+                  strokeWidth={1.4}
+                  className="text-white/20 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </div>
+            </a>
+          </motion.div>
+
+          {/* OFFICIAL WEBSITE */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.5,
+              delay: 0.16,
+            }}
+            className="lg:col-span-3"
+          >
+            <FooterLabel>Institution</FooterLabel>
+
+            <a
+              href="https://gcetly.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 flex min-h-[130px] flex-col justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-violet-400/20 hover:bg-violet-400/[0.035]"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.025] text-white/30 transition-colors duration-300 group-hover:border-violet-400/20 group-hover:text-violet-300">
+                  <Globe size={15} strokeWidth={1.5} />
+                </div>
+
+                <ArrowUpRight
+                  size={15}
+                  strokeWidth={1.4}
+                  className="text-white/15 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-300"
+                />
+              </div>
+
+              <div>
+                <p className="mt-1 text-[13px] font-medium text-white/65 transition-colors group-hover:text-white">
+                  Government College of Engineering, Tirunelveli
+                </p>
+
+                <p className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.22em] text-white/30">
+                  Official Website
+                </p>
+              </div>
+            </a>
+          </motion.div>
+        </div>
+
+        {/* BOTTOM BAR */}
+        <div className="border-t border-white/[0.06] pt-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+              © 2026 Association of Computer Science & Engineering
             </p>
+
+            <div className="flex items-center gap-3">
+              <span className="h-1 w-1 rounded-full bg-violet-400/70 shadow-[0_0_8px_rgba(167,139,250,0.7)]" />
+
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+                Government College of Engineering · Tirunelveli
+              </span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-[-1.5rem] left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[18vw] font-bold leading-none tracking-[-0.08em] text-white/[0.012]">
+        GENORA
       </div>
     </footer>
   );
 };
 
+// Footer label component
+const FooterLabel = ({ children }) => {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="h-px w-6 bg-violet-400/50" />
+
+      <span className="font-mono text-[10px] font-medium uppercase tracking-[0.3em] text-violet-300/60">
+        {children}
+      </span>
+    </div>
+  );
+};
+
 export default Footer;
+
+FooterLabel.propTypes = {
+  children: PropTypes.node,
+};
