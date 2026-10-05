@@ -133,14 +133,14 @@ const EventsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 border-t border-white/[0.06] pt-8 sm:mt-24"
+          className="mt-20 border-t border-white/[0.06] pt-6 sm:mt-24"
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-mono text-[7px] uppercase tracking-[0.28em] text-white/20">
+            <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/30">
               GENORA&apos;26
             </p>
 
-            <p className="text-[11px] text-white/25">
+            <p className="text-[12px] text-white/30">
               Your idea deserves an arena.
             </p>
           </div>

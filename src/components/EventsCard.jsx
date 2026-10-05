@@ -77,7 +77,7 @@ const EventsCard = ({ event_name, image, type, number, path }) => {
     >
       <Link
         to={path}
-        className="group relative block h-full overflow-hidden rounded-[18px] border border-white/[0.075] bg-[#09090c] outline-none transition-[transform,border-color,box-shadow] duration-400 ease-out hover:-translate-y-1 hover:border-white/[0.14] hover:shadow-[0_18px_45px_rgba(0,0,0,0.28)] focus-visible:ring-2 focus-visible:ring-white/30"
+        className="group relative block h-full overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#09090c] outline-none transition-[transform,border-color,box-shadow] duration-400 ease-out hover:-translate-y-1 hover:border-white/[0.14] hover:shadow-[0_18px_45px_rgba(0,0,0,0.28)] focus-visible:ring-2 focus-visible:ring-white/30"
       >
         <div className="relative aspect-[16/9] overflow-hidden bg-[#0d0d11]">
           <img
