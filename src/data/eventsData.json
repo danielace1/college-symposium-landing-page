@@ -373,10 +373,48 @@
     "event_name": "Player Auction",
     "icon": "🏆",
     "image": "/player-auction.png",
-    "description": "Details for the Player Auction event will be announced soon.",
-    "status": "Coming Soon",
-    "rounds": [],
-    "rules_and_regulations": {},
-    "judging_criteria": []
+    "description": "PLAYER AUCTION is a competitive cricket auction challenge where teams test their strategy, decision-making, budgeting, and knowledge of players. A maximum of 10 teams can participate, with each team consisting of 3 to 5 members. Before the auction begins, detailed statistics and performance records of the available cricket players will be displayed. Players will be introduced one by one, and teams can compete by placing bids based on the player's performance, role, and overall value. If no team places a bid, the player will be declared unsold. Each team must strategically build a final squad of 11 players while managing their available resources and maintaining a balanced combination of players. At the end of the auction, all teams will be evaluated based on the balance, quality, strategy, and overall strength of their squad. The team that builds the best-balanced and strongest squad will be declared the winner.",
+    "participation": "Team event",
+    "team_size": "3–5 members per team",
+    "maximum_teams": 10,
+    "final_squad_size": 11,
+    "rounds": [
+      {
+        "round_name": "Player Auction",
+        "description": "Players will be presented one by one along with their statistics and performance details. Teams can place bids for the players they want. If no team places a bid, the player will be declared unsold."
+      },
+      {
+        "round_name": "Squad Evaluation",
+        "description": "After the auction, all teams will be evaluated based on the balance, quality, strategy, and overall strength of their final 11-player squad."
+      }
+    ],
+    "rules_and_regulations": {
+      "maximum_teams": "10 teams",
+      "team_size": "Each team must have a minimum of 3 and a maximum of 5 members",
+      "player_presentation": "Players will be presented one by one along with their statistics and performance details",
+      "bidding": "Teams can bid for players based on their strategy and requirements",
+      "unsold_players": "A player will be declared unsold if no team places a bid",
+      "final_squad": "Each team must build a final squad of 11 players",
+      "strategy": "Teams must manage their resources strategically while building a balanced squad"
+    },
+    "judging_criteria": [
+      {
+        "criteria": "Squad Balance",
+        "description": "Balance and combination of players across different roles."
+      },
+      {
+        "criteria": "Player Quality",
+        "description": "Overall quality and performance value of the selected players."
+      },
+      {
+        "criteria": "Auction Strategy",
+        "description": "Effectiveness of bidding decisions, resource management, and player selection."
+      },
+      {
+        "criteria": "Overall Squad Strength",
+        "description": "Overall competitiveness and strength of the final 11-player squad."
+      }
+    ],
+    "winner": "The team with the best-balanced and strongest squad will be declared the winner."
   }
 }
