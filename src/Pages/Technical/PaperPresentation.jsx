@@ -6,6 +6,7 @@ import {
   FileText,
   Layers3,
   Lightbulb,
+  Phone,
   Presentation,
   ShieldCheck,
   Users,
@@ -94,8 +95,32 @@ const PaperPresentation = () => {
                 {event.description}
               </p>
 
-              <div className="mt-5 flex flex-wrap items-center gap-4">
+              <div className="mt-7 flex gap-3 sm:gap-5 flex-row sm:items-center">
                 <RegisterBtn />
+
+                {/* Coordinator */}
+                <a
+                  href={`tel:${event["co-ordinator-phone"]}`}
+                  className="group inline-flex items-center gap-3"
+                >
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.025] text-white/40 transition-all duration-300 group-hover:border-violet-400/25 group-hover:bg-violet-400/[0.06] group-hover:text-violet-300">
+                    <Phone size={15} strokeWidth={1.5} />
+                  </div>
+
+                  <div className="leading-none">
+                    <p className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.25em] text-white/25">
+                      Event Coordinator
+                    </p>
+
+                    <p className="text-[12px] font-medium text-white/65 transition-colors duration-300 group-hover:text-white">
+                      {event["co-ordinator-name"]}
+                    </p>
+
+                    <p className="mt-1 font-mono text-[13px] tracking-[0.08em] text-white/40 transition-colors duration-300 group-hover:text-violet-300/70">
+                      {event["co-ordinator-phone"]}
+                    </p>
+                  </div>
+                </a>
               </div>
             </motion.div>
 
@@ -449,38 +474,38 @@ const CriteriaCard = ({ number, item }) => {
 };
 
 Snapshot.propTypes = {
-  icon: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  label: PropTypes.string,
+  value: PropTypes.string,
 };
 
 SectionIntro.propTypes = {
-  eyebrow: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  eyebrow: PropTypes.string,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 RoundCard.propTypes = {
-  number: PropTypes.string.isRequired,
+  number: PropTypes.string,
   round: PropTypes.shape({
-    round_name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    time_allotted: PropTypes.string.isRequired,
-  }).isRequired,
+    round_name: PropTypes.string,
+    description: PropTypes.string,
+    time_allotted: PropTypes.string,
+  }),
 };
 
 RuleCard.propTypes = {
-  icon: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  label: PropTypes.string,
+  value: PropTypes.string,
 };
 
 CriteriaCard.propTypes = {
-  number: PropTypes.string.isRequired,
+  number: PropTypes.string,
   item: PropTypes.shape({
-    criteria: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
+    criteria: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 
 export default PaperPresentation;

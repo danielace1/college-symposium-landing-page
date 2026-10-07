@@ -4,6 +4,8 @@
     "icon": "📄",
     "image": "/paper-presentation.png",
     "description": "Paper Presentation is a technical event where participants present innovative ideas, research work, or technical concepts related to Computer Science and related domains. Teams will present their work using presentation slides and explain their idea, methodology, and impact. The event focuses on communication skills, technical knowledge, originality, and the ability to clearly explain complex concepts.",
+    "co-ordinator-phone": "+91 6369345012",
+    "co-ordinator-name": "Vijaya Kumar",
     "rounds": [
       {
         "round_name": "Abstract Screening",
@@ -60,6 +62,8 @@
     "image": "/code-volt.png",
     "description": "CODE VOLT is a two-member team-based coding and debugging challenge designed to test programming knowledge, logical thinking, code-reading ability, debugging skills, and attention to detail. Unlike conventional coding competitions, participants must understand, reconstruct, debug, and validate existing code while working together under time pressure.",
     "participation": "Team of 2 members",
+    "co-ordinator-phone": "+91 8190804948",
+    "co-ordinator-name": "Ganthan",
     "rounds": [
       {
         "round_name": "Broken Code",
@@ -131,6 +135,8 @@
     "participation": "Individual or team participation",
     "team_size": "Maximum 2 members per team",
     "event_duration": "Approximately 1 hour 30 minutes to 1 hour 45 minutes",
+    "co-ordinator-phone": "+91 9487169629",
+    "co-ordinator-name": "Kanishk",
     "rounds": [
       {
         "round_name": "Prompt Lock",
@@ -159,6 +165,8 @@
     "icon": "🤖",
     "image": "/ai-verse.png",
     "description": "AI VERSE is a two-round technical challenge designed for teams of two, combining Generative AI knowledge with practical application development. The event begins with a GenAI Quiz that tests participants on Generative AI concepts, AI tools, application development, programming fundamentals, and emerging AI technologies. Qualified teams will advance to the AI App Forge round, where they will receive a real-world problem statement and use Generative AI to design and develop a functional application within the given time.",
+    "co-ordinator-phone": "+91 7708749693",
+    "co-ordinator-name": "Sudharsan",
     "participation": "Team of 2 members",
     "rounds": [
       {
@@ -188,7 +196,15 @@
       ],
       "ai_usage": "Only models, tools, APIs, credits, and features accessible through free tiers or free-access plans may be used. Subscription-only models, premium models, paid APIs, purchased credits, and paid-exclusive features are not permitted.",
       "development_tools": "Participants may use commonly available programming languages, frameworks, libraries, IDEs, and development tools required to build their application, subject to event guidelines.",
-      "submission": "The application must be completed and submitted within the allotted time. Late submissions may not be considered.",
+      "submission": {
+        "description": "Teams must complete and submit their application within the allotted time. Participants may submit their work through either of the following methods:",
+        "options": [
+          "Create a GitHub repository and push the complete project source code to it.",
+          "Directly deploy the application using the respective development or deployment platform and submit the deployment link."
+        ],
+        "requirement": "The submitted GitHub repository or deployed application must be accessible to the organizers for evaluation.",
+        "deadline": "All submissions must be completed before the end of the allotted development time. Late submissions may not be considered."
+      },
       "problem_statement": "The problem statement will be provided by the organizers at the beginning of the AI App Forge round.",
       "internet_access": "Participants may use internet-accessible resources and permitted AI tools during the development round, subject to the rules announced by the organizers.",
       "originality": "The submitted application must be developed by the participating team during the event. Pre-built solutions or previously developed projects may not be submitted.",

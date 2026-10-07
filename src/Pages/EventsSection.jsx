@@ -196,7 +196,7 @@ const SectionHeader = ({ icon, label, description }) => {
 export default EventsSection;
 
 SectionHeader.propTypes = {
-  icon: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  label: PropTypes.string,
+  description: PropTypes.string,
 };
