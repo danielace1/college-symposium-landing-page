@@ -23,6 +23,7 @@
     ],
     "rules_and_regulations": {
       "team_size": "1 to 3 members per team",
+      "registration_limit": "Only the first 30 teams to register will be accepted.",
       "domain": "Topics must be related to Computer Science or related domains",
       "slides_limit": "Maximum 15 presentation slides",
       "presentation_time": "10 minutes presentation + Q&A",

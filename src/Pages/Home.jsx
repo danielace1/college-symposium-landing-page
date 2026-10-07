@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import InstitutionSection from "./InstitutionSection ";
 import EventsSection from "./EventsSection";
+import GenoraBackground from "../components/GenoraBackground";
 
 const EVENT_DATE = new Date("2026-10-14T00:00:00+05:30").getTime();
 
@@ -67,7 +68,7 @@ const Home = () => {
         <div className="absolute -bottom-[200px] left-[15%] h-[500px] w-[700px] rounded-full bg-indigo-500/[0.05] blur-[100px]" />
 
         {/* Architectural grid */}
-        <div className="genora-grid absolute inset-0" />
+        <GenoraBackground />
 
         <div className="absolute inset-y-0 left-[35%] w-px bg-gradient-to-b from-transparent via-white/[0.025] to-transparent" />
 
