@@ -8,10 +8,13 @@ import {
   ShieldCheck,
   Users,
   Zap,
+  FileText,
+  X,
+  ExternalLink,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import eventsData from "../../data/eventsData.json";
 import GenoraBackground from "../../components/GenoraBackground";
@@ -19,6 +22,7 @@ import RegisterBtn from "../../components/RegisterBtn";
 
 const PromptParadox = () => {
   const event = eventsData["prompt-paradox"];
+  const [isRulebookOpen, setIsRulebookOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -293,6 +297,16 @@ const PromptParadox = () => {
               <p className="mt-3 max-w-2xl text-sm leading-6 text-white/30">
                 {event.rules_and_regulations.registration}
               </p>
+
+              <button
+                type="button"
+                onClick={() => setIsRulebookOpen(true)}
+                className="mt-6 inline-flex items-center gap-2 rounded-xl border border-violet-300/[0.15] bg-violet-400/[0.06] px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-violet-200 transition-all duration-300 hover:border-violet-300/[0.3] hover:bg-violet-400/[0.1] hover:text-white"
+              >
+                <FileText size={14} strokeWidth={1.5} />
+                View Rulebook
+                <ExternalLink size={12} strokeWidth={1.5} />
+              </button>
             </div>
           </div>
         </motion.section>
@@ -317,6 +331,85 @@ const PromptParadox = () => {
           </div>
         </div>
       </div>
+
+      {isRulebookOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-5">
+          <div className="relative flex h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-white/[0.1] bg-[#09090d]">
+            {/* Header */}
+            <div className="flex shrink-0 items-center justify-between border-b border-white/[0.07] px-4 py-3">
+              <div className="flex items-center gap-3">
+                <FileText size={16} className="text-violet-300" />
+
+                <div>
+                  <p className="text-sm font-medium text-white/80">
+                    Prompt Paradox
+                  </p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    Rulebook
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsRulebookOpen(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.07] text-white/40 transition hover:text-white"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* PDF */}
+            <div className="min-h-0 flex-1">
+              <iframe
+                src="/prompt-paradox-rulebook.pdf"
+                title="Prompt Paradox Rulebook"
+                className="h-full w-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* RULE BOOK PDF */}
+      {isRulebookOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-5">
+          <div className="relative flex h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-white/[0.1] bg-[#09090d]">
+            {/* Header */}
+            <div className="flex shrink-0 items-center justify-between border-b border-white/[0.07] px-4 py-3">
+              <div className="flex items-center gap-3">
+                <FileText size={16} className="text-violet-300" />
+
+                <div>
+                  <p className="text-sm font-medium text-white/80">
+                    Prompt Paradox
+                  </p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">
+                    Rulebook
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsRulebookOpen(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.07] text-white/40 transition hover:text-white"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* PDF */}
+            <div className="min-h-0 flex-1">
+              <iframe
+                src="/prompt-paradox-rulebook.pdf"
+                title="Prompt Paradox Rulebook"
+                className="h-full w-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

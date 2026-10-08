@@ -5,16 +5,23 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   CalendarDays,
+  Mail,
   MoveRight,
   Sparkles,
+  Ticket,
+  X,
 } from "lucide-react";
+import Modal from "react-modal";
 import InstitutionSection from "./InstitutionSection ";
 import EventsSection from "./EventsSection";
 import GenoraBackground from "../components/GenoraBackground";
 
 const EVENT_DATE = new Date("2026-10-14T00:00:00+05:30").getTime();
 
+Modal.setAppElement("#root");
+
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -49,6 +56,15 @@ const Home = () => {
     const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const hasSeenModal = localStorage.getItem("genora-pass-modal");
+
+    if (!hasSeenModal) {
+      setIsModalOpen(true);
+      localStorage.setItem("genora-pass-modal", "true");
+    }
   }, []);
 
   return (
@@ -279,11 +295,11 @@ const Home = () => {
               delay: 0.3,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative mx-auto w-full max-w-[520px] lg:ml-auto"
+            className="relative mx-auto w-full min-w-0 max-w-[520px] lg:ml-auto"
           >
             <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/10 blur-[100px]" />
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-5">
+            <div className="relative w-full min-w-0 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-5">
               {/* Top status */}
               <div className="relative z-20 flex items-center justify-between border-b border-white/[0.07] pb-4">
                 <div className="flex items-center gap-2">
@@ -344,32 +360,82 @@ const Home = () => {
                 />
               </div>
 
-              {/* Date */}
-              <div className="relative grid grid-cols-[1fr_auto] items-end gap-5 border-t border-white/[0.07] pt-5">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
-                    The day
-                  </p>
+              <div className="relative mt-5">
+                {/* Floating registration line */}
+                <div className="relative h-px w-full bg-white/[0.07]">
+                  <div className="absolute left-1/2 top-1/2 z-20 w-[calc(100%-2rem)] max-w-[540px] -translate-x-1/2 -translate-y-1/2 sm:w-auto">
+                    <motion.div
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.2, duration: 0.6 }}
+                      className="w-full"
+                    >
+                      <div className="grid grid-cols-2 items-center rounded-full border border-violet-400/20 bg-[#0b0b10]/95 px-2 py-1.5 shadow-xl backdrop-blur-xl sm:flex sm:w-max sm:gap-2.5 sm:px-4 sm:py-2">
+                        {/* Paper Presentation */}
+                        <div className="flex min-w-0 items-center justify-center gap-1.5 border-r border-white/10 pr-2 sm:border-r-0 sm:pr-0 sm:gap-2">
+                          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400 shadow-[0_0_10px_#a78bfa]" />
 
-                  <div className="mt-2 flex items-end gap-3">
-                    <span className="font-['Syncopate'] text-5xl font-bold leading-none tracking-[-0.08em] text-white sm:text-6xl">
-                      14
-                    </span>
+                          <span className="min-w-0 truncate font-mono text-[7px] uppercase tracking-[0.08em] text-white/40 sm:text-[8px] sm:tracking-[0.16em]">
+                            Paper Presentation
+                          </span>
 
-                    <div className="mb-1">
-                      <p className="font-mono text-lg font-bold tracking-[0.1em] text-violet-300">
-                        OCT
-                      </p>
+                          <span className="shrink-0 font-mono text-[7px] font-semibold uppercase tracking-[0.06em] text-violet-300 sm:text-[8px] sm:tracking-[0.12em]">
+                            <span className="sm:hidden">30 Teams</span>
+                            <span className="hidden sm:inline">
+                              First 30 Teams
+                            </span>
+                          </span>
+                        </div>
 
-                      <p className="font-mono text-[13px] tracking-[0.1em] text-white/40">
-                        2026
-                      </p>
-                    </div>
+                        {/* Divider - desktop only */}
+                        <span className="hidden h-3 w-px bg-white/10 sm:block" />
+
+                        {/* Player Auction */}
+                        <div className="flex min-w-0 items-center justify-center gap-1.5 pl-2 sm:gap-2 sm:pl-0">
+                          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400 shadow-[0_0_10px_#a78bfa]" />
+
+                          <span className="min-w-0 truncate font-mono text-[7px] uppercase tracking-[0.08em] text-white/40 sm:text-[8px] sm:tracking-[0.16em]">
+                            Player Auction
+                          </span>
+
+                          <span className="shrink-0 font-mono text-[7px] font-semibold uppercase tracking-[0.06em] text-violet-300 sm:text-[8px] sm:tracking-[0.12em]">
+                            <span className="sm:hidden">10 Teams</span>
+                            <span className="hidden sm:inline">
+                              First 10 Teams
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
+                {/* Date */}
+                <div className="mt-6 grid grid-cols-[1fr_auto] items-end gap-5">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+                      The day
+                    </p>
 
-                <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/30">
-                  <CalendarDays size={14} />
+                    <div className="mt-2 flex items-end gap-3">
+                      <span className="font-['Syncopate'] text-5xl font-bold leading-none tracking-[-0.08em] text-white sm:text-6xl">
+                        14
+                      </span>
+
+                      <div className="mb-1">
+                        <p className="font-mono text-lg font-bold tracking-[0.1em] text-violet-300">
+                          OCT
+                        </p>
+
+                        <p className="font-mono text-[13px] tracking-[0.1em] text-white/40">
+                          2026
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/30">
+                    <CalendarDays size={14} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -477,6 +543,97 @@ const Home = () => {
 
       {/* Events */}
       <EventsSection />
+
+      {/* SYMPOSIUM PASS MODAL */}
+      {/* SYMPOSIUM PASS MODAL */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        shouldCloseOnOverlayClick
+        shouldCloseOnEsc
+        overlayClassName="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4 backdrop-blur-md"
+        className="relative w-full max-w-[350px] outline-none"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative overflow-hidden rounded-[2rem] border border-violet-400/20 bg-[#09090d] p-7 shadow-[0_30px_100px_rgba(0,0,0,0.65)]"
+        >
+          {/* Ambient glow */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-violet-500/[0.10] blur-[80px]" />
+
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-indigo-500/[0.08] blur-[70px]" />
+
+          {/* Background logo */}
+          <img
+            src="/genora-26-logo.png"
+            alt=""
+            className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.035]"
+          />
+
+          {/* Close */}
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(false)}
+            className="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/35 transition-all duration-300 hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-white"
+          >
+            <X size={14} />
+          </button>
+
+          <div className="relative z-10 text-center">
+            {/* Icon */}
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-400/20 bg-violet-500/[0.08] text-violet-300">
+              <Ticket size={20} strokeWidth={1.7} />
+            </div>
+
+            {/* Heading */}
+            <div className="mt-5">
+              <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-violet-300/60">
+                GENORA&apos;26
+              </span>
+
+              <h2 className="mt-2 text-xl font-medium tracking-[-0.04em] text-white">
+                Your Symposium
+                <span className="text-violet-300"> Pass</span>
+              </h2>
+
+              <div className="mx-auto mt-3 h-px w-8 bg-white/10" />
+
+              <p className="mx-auto mt-5 max-w-[270px] text-[11px] leading-5 text-white/50">
+                Your symposium pass will be sent to your
+                <span className="text-violet-300"> registered email</span> after
+                successful registration.
+              </p>
+            </div>
+
+            {/* Small reminder */}
+            <div className="mt-5 flex items-center justify-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3">
+              <Mail size={13} className="text-violet-300/60" />
+
+              <span className="text-[9px] uppercase tracking-[0.16em] text-white/35">
+                Keep your inbox checked
+              </span>
+            </div>
+
+            {/* CTA */}
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              className="group relative mt-6 w-full overflow-hidden rounded-2xl bg-violet-500 py-3.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-white shadow-[0_10px_35px_rgba(139,92,246,0.2)] transition-all duration-300 hover:bg-violet-400 active:scale-[0.98]"
+            >
+              <span className="absolute inset-y-0 -left-full w-1/2 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-700 group-hover:left-[130%]" />
+
+              <span className="relative z-10">Got it</span>
+            </button>
+          </div>
+
+          {/* Corner details */}
+          <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 rounded-tl-[2rem] border-l border-t border-violet-400/20" />
+
+          <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 rounded-br-[2rem] border-b border-r border-violet-400/20" />
+        </motion.div>
+      </Modal>
     </main>
   );
 };
